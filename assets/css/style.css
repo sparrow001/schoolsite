@@ -1,0 +1,66 @@
+#formContainer{
+    background-color:white;
+    width: 25%;
+    height: 55%;
+    margin: 300px auto;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+#email {
+    width:70%;
+    height:40px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 17px;
+    border: none;
+    outline:none;
+    border-bottom:2px solid black;
+}
+
+#password{
+    width:70%;
+    height:40px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    outline:none;
+    padding-top: 17px;
+    border-bottom:2px solid black;
+    margin-bottom: 7px;
+}
+
+#signUp{
+    visibility: hidden;
+}
+
+#logIn{
+    background-color: #CDCDCD;
+    color:black;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'PT Serif', sans-serif;
+    margin-top: 2px;
+
+}
+
+#forgot {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'PT Serif', sans-serif;
+    color: black;
+    margin-left: 100px;
+    
+}
+button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
