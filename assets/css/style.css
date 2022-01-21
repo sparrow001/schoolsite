@@ -1,6 +1,5 @@
 #formContainer{
     background-color:white;
-    width: 25%;
     height: 55%;
     margin: 20% auto;
     padding: 1%;
@@ -9,20 +8,28 @@
 
 }
 
-
+body {
+    background-image: url("../img/index/bkground.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 @media (max-width: 821px) and (min-width: 545px) {
     #logIn { padding: 10px 25px;}
     .shrinkable { display: block; }
+    #formContainer {width: 45%;}
+    body { background-image: none;}
 }
 
 @media (max-width: 544px) {
     #logIn { padding: 1px 20px;}
     .shrinkable { display: block; }
+    #formContainer {width: 55%}
 }
 @media (min-width: 822px) {
     .shrinkable { display: block }
     #logIn { padding: 13px 32px;}
+    #formContainer {width: 25%;}
 }
 #email {
     width:70%;
