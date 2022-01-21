@@ -2,16 +2,64 @@
     background-color:white;
     width: 25%;
     height: 55%;
-    margin: 300px auto;
-    padding: 30px;
+    margin: 20% auto;
+    padding: 1%;
     border: 1px solid black;
     border-radius: 10px;
 
 }
+
+.short {
+    display: none;
+}
+
+@media (max-width: 821px) {
+    #emailshort { display: block }
+    #passwordshort { display: block }
+    .full { display: none }
+    #logInShort { display:block }
+}
+
+@media (min-width: 822px) {
+    .full { display: block }
+}
 #email {
     width:70%;
     height:40px;
-    display: block;
+    margin: 0 auto;
+    padding-top: 17px;
+    border: none;
+    outline:none;
+    border-bottom:2px solid black;
+}
+#logInShort {
+    background-color: #CDCDCD;
+    color:black;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'PT Serif', sans-serif;
+    margin: 0 auto;
+
+}
+#password{
+    width:70%;
+    height:40px;
+    margin: 0 auto;
+    border: none;
+    outline:none;
+    padding-top: 17px;
+    border-bottom:2px solid black;
+    margin-bottom: 7px;
+}
+
+#emailshort {
+    width:70%;
+    height:40px;
     margin: 0 auto;
     padding-top: 17px;
     border: none;
@@ -19,10 +67,9 @@
     border-bottom:2px solid black;
 }
 
-#password{
+#passwordshort {
     width:70%;
     height:40px;
-    display: block;
     margin: 0 auto;
     border: none;
     outline:none;
@@ -44,7 +91,6 @@
     font-weight: bold;
     font-family: 'PT Serif', sans-serif;
     margin: 0 auto;
-    display: block;
 
 }
 
