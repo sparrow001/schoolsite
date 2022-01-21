@@ -9,19 +9,20 @@
 
 }
 
-.short {
-    display: none;
+
+
+@media (max-width: 821px) and (min-width: 545px) {
+    #logIn { padding: 10px 25px;}
+    .shrinkable { display: block; }
 }
 
-@media (max-width: 821px) {
-    #emailshort { display: block }
-    #passwordshort { display: block }
-    .full { display: none }
-    #logInShort { display:block }
+@media (max-width: 544px) {
+    #logIn { padding: 1px 20px;}
+    .shrinkable { display: block; }
 }
-
 @media (min-width: 822px) {
-    .full { display: block }
+    .shrinkable { display: block }
+    #logIn { padding: 13px 32px;}
 }
 #email {
     width:70%;
@@ -83,7 +84,6 @@
     background-color: #CDCDCD;
     color:black;
     border: none;
-    padding: 13px 32px;
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
