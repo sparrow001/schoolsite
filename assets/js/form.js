@@ -14,20 +14,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 document.getElementById("logIn").addEventListener("click", logIn);
-document.getElementById("logInShort").addEventListener("click", logIn);
 document.getElementById("forgot").addEventListener("click", forgot);
 const errmsg = document.getElementById("error")
 
 function logIn() {
-    let email;
-    email = document.getElementById("email");
-    if (window.getComputedStyle(email).display === "none") {
-        email = document.getElementById("emailShort");
-    }
+    var email = document.getElementById("email");
     var password = document.getElementById("password");
-    if (window.getComputedStyle(password).display === "none") {
-        password = document.getElementById("passwordShort");
-    }
     const promise = signInWithEmailAndPassword(auth, email.value, password.value);
     promise.catch(e => error(e.message));
 
@@ -36,24 +28,13 @@ function logIn() {
 
 function forgot() {
     document.getElementById("password").style.display = "none";
-    document.getElementById("passwordShort").style.display = "none";
     document.getElementById("forgot").style.display = "none";
-    let login;
-    login = document.querySelector("#logIn");
-    if (window.getComputedStyle(login).display === "none") {
-        login = document.querySelector("#logInShort").innerHTML = "Reset";
-    }else {
-        login = document.querySelector("#logIn").innerHTML = "Reset Password";
-    }
+    document.querySelector("#logIn").innerHTML = "Reset Password";
     document.getElementById("logIn").addEventListener("click", reset);
-    document.getElementById("logInShort").addEventListener("click", reset);
 }
 
 function reset() {
     var email = document.getElementById("email");
-    if (window.getComputedStyle(email).display === "none") {
-        email = document.getElementById("emailShort");
-    }
     const promise = sendPasswordResetEmail(auth, email.value);
     promise.catch(e => error(e.message, "reset"));
 }
