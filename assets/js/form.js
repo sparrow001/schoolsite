@@ -1,5 +1,6 @@
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, setPersistence, browserSessionPersistence, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import { setcookiehour, deleteCookie, getCookie } from "./functions.js";
 const firebaseConfig = {
     apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
     authDomain: "school-site-b799d.firebaseapp.com",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+setPersistence(auth, browserSessionPersistence);
 document.getElementById("logIn").addEventListener("click", logIn);
 document.getElementById("forgot").addEventListener("click", forgot);
 const errmsg = document.getElementById("error")
@@ -34,7 +36,7 @@ function forgot() {
 }
 
 function reset() {
-    var email = document.getElementById("email");
+    let email = document.getElementById("email");
     const promise = sendPasswordResetEmail(auth, email.value);
     promise.catch(e => error(e.message, "reset"));
 }
@@ -43,10 +45,18 @@ function error(errorMSG, context = "") {
 
     errmsg.innerHTML = msg;
 }
+
+window.onbeforeunload = function() {
+    deleteCookie("user");
+    signOut(auth)
+}
 auth.onAuthStateChanged(user =>{
     if(user){
         alert("Signed In " + user.email)
         errmsg.innerHTML = "";
+        setcookiehour("user", user.email);
+        window.onbeforeunload = null;
+        window.location.replace("/portal/dash.html");
     }
     else{
         alert("Signed Out")

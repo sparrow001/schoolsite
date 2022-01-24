@@ -5,11 +5,10 @@
     padding: 1%;
     border: 1px solid black;
     border-radius: 10px;
-
 }
 
 body {
-    background-image: url("../img/index/bkground.gif");
+    background-image: url("/assets/img/index/bkground.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -132,27 +131,3 @@ button:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.activenav {
-    border-bottom: 1px;
-}
-
-.topnav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-.topnav li a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    font-family: 'PT Serif', sans-serif;
-    float: right;
-}
