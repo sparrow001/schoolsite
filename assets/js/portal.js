@@ -37,5 +37,3 @@ let welcome = document.getElementById("welcome")
 data.then(function(data) {
     welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
 })
-
-makeElement("img", null, "/assets/img/general/book-dark.svg", "recent-item")
