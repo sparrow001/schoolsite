@@ -56,7 +56,7 @@ auth.onAuthStateChanged(user =>{
         errmsg.innerHTML = "";
         setcookiehour("user", user.email);
         window.onbeforeunload = null;
-        window.location.replace("/portal/dash.html");
+        window.location.replace("/schoolsite/portal/dash.html");
     }
     else{
         alert("Signed Out")
