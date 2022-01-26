@@ -1,3 +1,4 @@
+/* Navigation */
 .activenav {
     border-bottom: 4px solid #ffffff;
     border-radius: 3px;
@@ -44,14 +45,26 @@
 }
 
 .items:hover {
-    border-bottom: 4px solid #ffffff;
-    border-radius: 3px;
+    border-bottom: 100% solid #ffffff;
+    border-radius: 1%;
     transition: all .3s linear;
 }
 
+@media (max-width: 400px) {
+    .topnav a.title {
+        font-size: 20px;
+    }
+    .items {
+        width: 10%;
+        margin-left: 5%;
+    }
+}
+/*
+Welcome Div 
+*/
 div.welcome{
     background-color:white;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
     border-radius: 5px;
@@ -63,28 +76,7 @@ div.welcome{
     justify-content: center;
     align-items: center;
 }
-
-div.recent {
-    background-color:white;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
-    border-radius: 5px;
-    margin: 1%;
-    width: 20%;
-    display: flex;
-}
-
-div.recent-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: left;
-    width: 100%;
-    border: 1px solid black;
-
-}
-div.welcome img.avatar {
+img.avatar {
     width: 100px;
     height: 100px;
     display: block;
@@ -92,7 +84,6 @@ div.welcome img.avatar {
     float: left;
     margin-bottom: 1%;
     margin-right: 2%;
-
 }
 
 div.welcome h1#welcome {
@@ -100,4 +91,64 @@ div.welcome h1#welcome {
     font-size: 30px;
     font-weight: bold;
     display: block;
+}
+
+@media (max-width: 333px) {
+    div.welcome h1#welcome {
+        font-size: 20px;
+    }
+    img.avatar {
+        width: 50px;
+        height: 50px;
+    }
+}
+/* Recent */
+div.recent {
+    background-color:white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 20%;
+    display: inline-block;
+}
+
+.recent h2 {
+    margin-left: 4%;
+    margin-top: 7%;
+    margin-right: 4%;
+    padding-bottom: 1%;
+    border-bottom: 4px solid black;
+}
+
+/* recent content */
+
+div.recent-item {
+    float: left;
+    display: block;
+    margin-left: 5%;
+    padding-bottom: 0;
+    border-bottom: 2px solid black;
+    margin-bottom: 3%;
+}
+
+div.recent-item img {
+    float: left;
+}
+
+div.recent-item p.action{
+    float: left;
+    font-size: 20px;
+
+    
+}
+
+@media (max-width:563px) {
+    div.recent {
+        width: 50%;
+    }
+}
+
+@media (max-width: 438px) {
 }
