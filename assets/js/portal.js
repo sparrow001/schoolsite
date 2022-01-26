@@ -11,6 +11,13 @@ if(user == '') {
     window.title = user
 }
 
+$(document).on("click", "a", function() {
+    var id = $(this).attr("id");
+    if (id == "redirpage") {
+        window.onbeforeunload = null
+    }
+});
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
