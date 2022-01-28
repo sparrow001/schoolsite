@@ -6,11 +6,9 @@
     <title>School Site - Documents</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/portal/style.css">
+    <link rel="stylesheet" href="../assets/css/portal/docs.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.2/firebase-analytics.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="module" src="../assets/js/portal.js"></script>
@@ -32,43 +30,46 @@
         <img src="../assets/img/personalization/placeav.png" class="avatar" id="avatar" alt="Avatar">
         <h1 id="welcome">Welcome to your dashboard, </h1>
     </div>
-    <div class="recent">
-        <h2>Recent Activity</h2>
-        <div class="recent-item">
-            <img src="../assets/img/general/book-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">New document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/edit-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">Edit document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/file-minus-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">Delete document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/book-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">New document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/edit-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">Edit document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/edit-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">Edit document</p>
-        </div>
-        <div class="recent-item">
-            <img src="../assets/img/general/edit-dark.svg" alt="Document" >
-            <span></span>
-            <p class="action">Edit document</p>
+    <div class="documents">
+        <div class=document-content>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">cat lol</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">pictures health</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">schedule</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">history notes</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">6.4 Notes Health</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">Rodents Project</p>
+            </div>
+            <div class="document-item">
+                <img src="../assets/img/general/document.svg" alt="Document" class="doc-image">
+                <p class="doc-text">Author Craft</p>
+            </div>
+            <div class="document-item" style="border: none">
+                <img src="../assets/img/general/plus.svg" alt="Document" class="doc-image">
+            </div>
         </div>
     </div>
+    <div style="margin: 1%;">
+        <p>Document viewing is currently disabled due to a security exploit. There is no ETA available, as the library needs to be updated.</p>
+    </div>
+    <footer>
+        <p>&copy 2022 School Site</p>
+    </footer>
 </body>
 </html>

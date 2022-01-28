@@ -11,13 +11,6 @@ if(user == '') {
     window.title = user
 }
 
-$(document).on("click", "a", function() {
-    var id = $(this).attr("id");
-    if (id == "redirpage") {
-        window.onbeforeunload = null
-    }
-});
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
@@ -35,8 +28,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 window.onbeforeunload = function() {
-    deleteCookie("user");
-    signOut(auth)
+    //deleteCookie("user");
+    //signOut(auth)
 }
 
 
@@ -44,3 +37,31 @@ let welcome = document.getElementById("welcome")
 data.then(function(data) {
     welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
 })
+
+function clickOrigin(e){
+    var target = e.target;
+    var tag = [];
+    tag.tagType = target.tagName.toLowerCase();
+    tag.tagClass = target.className.split(' ');
+    tag.id = target.id;
+    tag.parent = target.parentNode;
+    try {
+    tag.href = target.getAttribute('href');
+    } catch(err) {
+        tag.href = "";
+    }
+
+    return tag;
+}
+
+var tagsToIdentify = ['img','a'];
+
+document.body.onclick = function(e){
+    let elem = clickOrigin(e);
+
+    for (let i=0;i<tagsToIdentify.length;i++){
+        if (elem.tagType == tagsToIdentify[i]){
+            window.onbeforeunload = null
+        }
+    }
+};

@@ -1,0 +1,36 @@
+.documents { 
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.document-item {
+    width: 10%;
+    height: 40%;
+    display: inline-block;
+    border: 2px solid gray;
+    text-align: center;
+    vertical-align: top;
+    justify-content: center;
+    margin: 1%;
+}
+
+.doc-image {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 1%;
+    margin-right: 2%;
+}
+
+.doc-text {
+    display: block;
+    text-align: center;
+}

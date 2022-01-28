@@ -31,7 +31,6 @@
     display: block;
     color: #f2f2f2;
     text-align: center;
-    margin-left: 20px;
     text-decoration: none;
     font-size: 30px;
     font-weight: bold;
@@ -42,6 +41,7 @@
     justify-content: space-between;
     float: right;
     margin: 4px;
+    background-color: transparent;
 }
 
 .items:hover {
@@ -53,10 +53,17 @@
 @media (max-width: 400px) {
     .topnav a.title {
         font-size: 20px;
+        float: left;
     }
     .items {
         width: 10%;
         margin-left: 5%;
+    }
+}
+@media (max-width: 322px) {
+    .items { 
+        width: 8%;
+        margin-left: 3%;
     }
 }
 /*
@@ -122,6 +129,10 @@ div.recent {
     border-bottom: 4px solid black;
 }
 
+/* Bottom Container */
+#bottomcontainer {
+    display: flex;
+}
 /* recent content */
 
 div.recent-item {
@@ -146,9 +157,63 @@ div.recent-item p.action{
 
 @media (max-width:563px) {
     div.recent {
-        width: 50%;
+        width: 100%;
     }
 }
 
-@media (max-width: 438px) {
+/* Documents */
+.documents { 
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    box-sizing: border-box;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.document-item {
+    width: 10%;
+    display: inline-block;
+    border: 2px solid gray;
+    text-align: center;
+    vertical-align: top;
+    justify-content: center;
+    margin: 1%;
+}
+.add { 
+    width: 10%;
+    display: inline-block;
+    border: 2px solid gray;
+    text-align: center;
+    vertical-align: top;
+    justify-content: center;
+    margin: 1%;
+}
+.doc-image {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 1%;
+    margin-right: 2%;
+}
+
+.doc-text {
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: 688px) {
+    .documents {
+        display: none;
+    }
+}
+/* footer */
+footer { 
+    margin: 1%;
 }
