@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue, get, child} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
+import { getDatabase, ref, onValue, get, child, set} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 const firebaseConfig = {
@@ -62,7 +62,7 @@ export function startReadUserData(email) {
     })
 }
 
-export function readUserData(email, key = null, ctx = null) {
+export function readUserData(email) {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `users/${btoa(email)}`)).then(snapshot => {
     if (snapshot.exists()) {
@@ -76,19 +76,11 @@ export function readUserData(email, key = null, ctx = null) {
   
 }
 
-export function makeElement(element, text = null, imgpath = null, divID = null) {
-  let tag = document.createElement(element);
-  if (text != null) {
-    var text = document.createTextNode(text);
-    tag.appendChild(text);
-  }
-  if (imgpath != null) {
-    tag.src = imgpath;
-  }
-  if (text != null && imgpath != null) {
-    console.error("You can't have a text and an imgpath");
-  }
-  if (divID != null) {
-    document.getElementById(divID).appendChild(tag);
-  }
+export function processUserUpdate(dname, fname, lname) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + btoa(email)), {
+    display_name: dname,
+    first_name: fname,
+    last_name: lname
+  });
 }

@@ -17,6 +17,7 @@ const auth = getAuth(app);
 setPersistence(auth, browserSessionPersistence);
 document.getElementById("logIn").addEventListener("click", logIn);
 document.getElementById("forgot").addEventListener("click", forgot);
+document.getElementById("tos").addEventListener("click", tos);
 const errmsg = document.getElementById("error")
 
 function logIn() {
@@ -35,6 +36,9 @@ function forgot() {
     document.getElementById("logIn").addEventListener("click", reset);
 }
 
+function tos() {
+    window.location.href = "./tos.html";
+}
 function reset() {
     let email = document.getElementById("email");
     const promise = sendPasswordResetEmail(auth, email.value);

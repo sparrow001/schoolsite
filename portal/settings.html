@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>School Site - Settings</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/portal/style.css">
+    <link rel="stylesheet" href="../assets/css/portal/settings.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="../assets/js/settings.js"></script>
     <script type="module" src="../assets/js/portal.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
@@ -18,16 +19,24 @@
     <header>
         <nav class="topnav">
             <ul>
-                <li><a id="redirpage" href="#" class="title">School Site</a></li>
+                <li><a id="redirpage" href="dash.html" class="title">School Site</a></li>
                 <li><a id="redirpage" href="#" class="activenav items"><img src="../assets/img/general/settings.svg" alt="Settings"  ></a></li>
                 <li><a id="redirpage" href="docs.html" class="items"><img src="../assets/img/general/book.svg" alt="Documents"></a></li>
                 <li><a id="redirpage" href="dash.html" class="items"><img src="../assets/img/general/home.svg" alt="Home"></a></li>
             </ul>
         </nav>
     </header>
-    <div class="welcome">
-        <img src="../assets/img/personalization/placeav.png" class="avatar" id="avatar" alt="Avatar">
-        <h1 id="welcome">Welcome to your dashboard, </h1>
+    <div class="settings">
+        <div>
+            <div class="item" id="avatar"><img src="../assets/img/personalization/placeav.png" alt="Avatar"><p>Contact Management for Avatar</p></div>
+            <div class="item text" id="display"><p id="display_name">Display Name:</p><input type="text" id="dname" required></div>
+            <div class="item text" id="emaildiv"><p id="email">Email:</p><input type="text" id="em" required></div>
+            <div class="item text" id="first"><p id="first_name">First Name:</p><input type="text" id="fname" required></div>
+            <div class="item text" id="last"><p id="last_name">Last Name:</p><input type="text" id="lname" required></div>
+            <div class="item text" id="thetoken"><p id="token">Token:</p><input type="text" id="tok" required></div>
+            <button id="submit" onClick="submit">Submit</button>
+        </div>
     </div>
+    
 </body>
 </html>

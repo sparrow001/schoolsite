@@ -1,4 +1,4 @@
-import { getCookie, deleteCookie, readUserData, makeElement } from './functions.js';
+import { getCookie, deleteCookie, readUserData } from './functions.js';
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
@@ -22,7 +22,6 @@ const firebaseConfig = {
     measurementId: "G-VXQWNZJ3MX"
 };
 
-const db = getDatabase();
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -35,7 +34,16 @@ window.onbeforeunload = function() {
 
 let welcome = document.getElementById("welcome")
 data.then(function(data) {
-    welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
+    try {
+        welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
+    }
+    catch(e) {
+        if (e instanceof TypeError) {
+            console.log("No Welcome header found");
+        } else {
+            console.log(e)
+        }
+    }
 })
 
 function clickOrigin(e){
