@@ -10,7 +10,8 @@ Insert a spotify song, and get a couple of options:
   1. Get a 30 second preview of your song, directly from spotify! (May not work)
   2. Do a reverse search of your song on YT and find the song
 
-Games (InDev)
+Games:
+  1. We currently have FNAF 1,2,3, and 4 available. Any game requests WILL BE DONE assuming its not crazy. (like minecraft isn't happening, sorry)
 
 Ability to instantly erase any evidence of existence when pressing a keyboard shortcut, or when leaving the website.
 
