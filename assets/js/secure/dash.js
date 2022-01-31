@@ -5,7 +5,7 @@ import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-
 const user = getCookie("user");
 var data = readUserData(user);
 if(user == '') {
-    window.location.replace("../index.html");
+    window.location.replace("/schoolsite//index.html");
 }else {
     window.title = user
 }
