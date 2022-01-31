@@ -75,12 +75,3 @@ export function readUserData(email) {
   });
   
 }
-
-export function processUserUpdate(dname, fname, lname) {
-  const db = getDatabase();
-  set(ref(db, 'users/' + btoa(email)), {
-    display_name: dname,
-    first_name: fname,
-    last_name: lname
-  });
-}

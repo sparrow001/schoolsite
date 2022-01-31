@@ -1,4 +1,4 @@
-import { readUserData, getCookie, processUserUpdate } from './functions.js';
+import { readUserData, getCookie } from './functions.js';
 
 
 var user = getCookie('user');
@@ -34,15 +34,16 @@ data.then(function(data) {
 
 document.getElementById("submit").addEventListener("click", submit);
 function submit() {
-    let dname = btoa(document.getElementById("dname").value);
-    let email = btoa(document.getElementById("em").value);
-    let fname = btoa(document.getElementById("fname").value);
-    let lname = btoa(document.getElementById("lname").value);
-    let token = btoa(document.getElementById("tok").value);
+    let dname = btoa(document.getElementById("dname").value.toLowerCase());
+    let email = btoa(document.getElementById("em").value.toLowerCase());
+    let fname = btoa(document.getElementById("fname").value.toLowerCase());
+    let lname = btoa(document.getElementById("lname").value.toLowerCase());
+    let token = btoa(document.getElementById("tok").value.toLowerCase());
     if (atob(dname) == "s" && atob(email) == "c" && atob(fname) == "h" && atob(lname) == "o" && atob(token) == "l") {
-        console.log("success");
+        window.onbeforeunload = null
+        window.location.replace("../secure/dash.html");
     }else {
-        processUserUpdate();
+
     }
 }
 

@@ -1,4 +1,4 @@
-import { getCookie, deleteCookie, readUserData } from './functions.js';
+import { getCookie, deleteCookie, readUserData } from '../functions.js';
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 
