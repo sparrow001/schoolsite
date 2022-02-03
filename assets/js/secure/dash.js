@@ -2,15 +2,6 @@ import { getCookie, deleteCookie, readUserData } from '../functions.js';
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 
-const user = getCookie("user");
-var data = readUserData(user);
-if(user == '') {
-    window.location.replace("/schoolsite/index.html");
-}else {
-    window.title = user
-}
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
     authDomain: "school-site-b799d.firebaseapp.com",
@@ -20,14 +11,22 @@ const firebaseConfig = {
     appId: "1:704109356346:web:be6a9266093b06dbd81c03",
     measurementId: "G-VXQWNZJ3MX"
 };
-
-// Initialize Firebase
+const user = getCookie("user");
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+var data = readUserData(user);
+if(user == '') {
+    signOut(auth);
+    window.location.replace("/schoolsite/index.html");
+}else {
+    window.title = user
+}
+
+// Initialize Firebase
 
 window.onbeforeunload = function() {
-    deleteCookie("user");
-    signOut(auth)
+    //deleteCookie("user");
+    //signOut(auth)
 }
 
 

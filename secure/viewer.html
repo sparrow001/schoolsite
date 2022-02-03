@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>School Site - Documents</title>
+    <title>School Site - Viewer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/secure/style.css">
     <link rel="stylesheet" href="../assets/css/secure/med.css">
@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="module" src="../assets/js/secure/dash.js"></script>
-    <script type="module" src="../assets/js/secure/medhandler.js"></script>
+    <script type="module" src="../assets/js/secure/viewer.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
 </head>
@@ -28,10 +28,7 @@
         </nav>
     </header>
     <div id="input">
-        <div id="input-content">
-            <input id="medinput" type="text" required>
-            <button id="medsub">Try</button>
-        </div>   
+        <video id="medvid" poster="../assets/img/secure/med.svg" controls ></video>   
     </div>
     <div style="margin: 1%;">
         <p>Document viewing is currently disabled due to a security exploit. There is no ETA available, as the library needs to be updated.</p>
