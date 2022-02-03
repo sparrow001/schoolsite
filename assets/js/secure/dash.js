@@ -25,8 +25,8 @@ if(user == '') {
 // Initialize Firebase
 
 window.onbeforeunload = function() {
-    //deleteCookie("user");
-    //signOut(auth)
+    deleteCookie("user");
+    signOut(auth)
 }
 
 
