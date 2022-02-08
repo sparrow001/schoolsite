@@ -13,8 +13,7 @@ function submedia() {
     if (medid.indexOf('&') > -1) {
         medid = medid.split('&')[0];
     }
-    let url = "https://invidious.namazso.eu/latest_version?id=" + medid + "&itag=22"
-    setcookiehour('medid', btoa(url));
+    setcookiehour('medid', btoa(medid));
     window.onbeforeunload = null
     window.location.replace("viewer.html")
 }
