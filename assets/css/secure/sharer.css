@@ -1,0 +1,50 @@
+div#input {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+#input-content {
+    margin: 15%;
+    text-align: center;
+}
+
+#medinput {
+    width: 50%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(172, 172, 172);
+    caret-color: white;
+    margin: 1%;
+}
+
+::placeholder {
+    color: rgb(104, 102, 102);
+}
+#medsub {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+}
+
+#medvid {
+    margin: 1%;
+    width: 70%;
+    height: 70rem;
+    background-color: black;
+}

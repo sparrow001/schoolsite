@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>School Site - Documents</title>
+    <title>School Site - Share Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/secure/style.css">
-    <link rel="stylesheet" href="../assets/css/secure/med.css">
+    <link rel="stylesheet" href="../assets/css/secure/sharer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="module" src="../assets/js/secure/dash.js"></script>
-    <script type="module" src="../assets/js/secure/medhandler.js"></script>
+    <script type="module" src="../assets/js/secure/sharer.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
 </head>
@@ -34,8 +34,13 @@
     </header>
     <div id="input">
         <div id="input-content">
-            <input id="medinput" type="text" required>
-            <button id="medsub">Try</button>
+            <input id="medinput" type="text" placeholder="*Email" required>
+            <input id="medinput" type="text" placeholder="Phone">
+            <input id="medinput" type="text" placeholder="*First Name">
+            <input id="medinput" type="text" placeholder="*Last Name">
+            <br>
+            <button id="medsub" disabled>Submit</button>
+
         </div>   
     </div>
     <div style="margin: 1%;">
