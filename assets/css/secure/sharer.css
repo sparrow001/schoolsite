@@ -15,7 +15,7 @@ div#input {
     text-align: center;
 }
 
-#medinput {
+.shareinput {
     width: 50%;
     text-align: center;
     border: 2px solid black;
@@ -28,7 +28,7 @@ div#input {
 ::placeholder {
     color: rgb(104, 102, 102);
 }
-#medsub {
+#share {
     background-color: #CDCDCD;
     color:black;
     border: 1px solid black;
@@ -40,11 +40,4 @@ div#input {
     padding-left: 5%;
     padding-right: 5%;
     margin-left: 1%;
-}
-
-#medvid {
-    margin: 1%;
-    width: 70%;
-    height: 70rem;
-    background-color: black;
 }

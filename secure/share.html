@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script type="module" src="../assets/js/secure/dash.js"></script>
+    <!-- <script type="module" src="../assets/js/secure/dash.js"></script> -->
     <script type="module" src="../assets/js/secure/sharer.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
@@ -24,9 +24,9 @@
                 <li><a id="redirpage" href="tutorials/entrance.html" class="items"><img src="../assets/img/secure/help.svg" 
                     alt="Tutorials" href="tutorials/entrance.html"></a></li>
                 <li><a id="redirpage" href="classes.html" class="items"><img src="../assets/img/secure/monitor.svg" alt="Settings"  ></a></li>
-                <li><a id="redirpage" href="share.html" class="items"><img src="../assets/img/secure/share.svg"
+                <li><a id="redirpage" href="share.html" class="activenav items"><img src="../assets/img/secure/share.svg"
                     alt="Share"></a></li>
-                <li><a id="redirpage" href="#" class="activenav items"><img src="../assets/img/secure/med.svg" alt="Documents"></a></li>
+                <li><a id="redirpage" href="#" class="items"><img src="../assets/img/secure/med.svg" alt="Documents"></a></li>
                 <li><a id="redirpage" href="dash.html" class="items"><img src="../assets/img/general/home.svg" alt="Home"></a></li>
 
             </ul>
@@ -34,12 +34,12 @@
     </header>
     <div id="input">
         <div id="input-content">
-            <input id="medinput" type="text" placeholder="*Email" required>
-            <input id="medinput" type="text" placeholder="Phone">
-            <input id="medinput" type="text" placeholder="*First Name">
-            <input id="medinput" type="text" placeholder="*Last Name">
+            <input class="shareinput" id="shareemail" type="text" placeholder="*Email" required>
+            <input class="shareinput" id="sharephone" type="text" placeholder="Phone (Not Required, but Recommended)">
+            <input class="shareinput" id="sharefirst" type="text" placeholder="*First Name" required>
+            <input class="shareinput" id="sharelast" type="text" placeholder="*Last Name" required>
             <br>
-            <button id="medsub" disabled>Submit</button>
+            <button id="share">Submit</button>
 
         </div>   
     </div>

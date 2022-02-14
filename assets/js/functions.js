@@ -81,3 +81,14 @@ export async function request(url) {
   let data = await response.json();
   return data;
 }
+
+export function writeShare(baseemail, shareemail, sharefirst, sharelast, sharephone = null) {
+  const db = getDatabase();
+  set(ref(db, 'sharereq/' + shareemail), {
+    requestby: baseemail,
+    first_name: sharefirst,
+    last_name: sharelast,
+    phone: sharephone
+  });
+  return console.log("done")
+}

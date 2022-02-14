@@ -142,6 +142,7 @@ div.recent-item {
     padding-bottom: 0;
     border-bottom: 2px solid black;
     margin-bottom: 3%;
+    margin-right: 5%;
 }
 
 div.recent-item img {
