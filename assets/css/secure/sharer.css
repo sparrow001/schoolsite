@@ -28,6 +28,12 @@ div#input {
 ::placeholder {
     color: rgb(104, 102, 102);
 }
+
+#er {
+    color: red;
+    font-size: 1em;
+    display: none;
+}
 #share {
     background-color: #CDCDCD;
     color:black;

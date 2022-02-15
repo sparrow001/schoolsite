@@ -84,11 +84,16 @@ export async function request(url) {
 
 export function writeShare(baseemail, shareemail, sharefirst, sharelast, sharephone = null) {
   const db = getDatabase();
-  set(ref(db, 'sharereq/' + shareemail), {
-    requestby: baseemail,
-    first_name: sharefirst,
-    last_name: sharelast,
-    phone: sharephone
-  });
-  return console.log("done")
+  try {
+    console.log(arguments)
+    set(ref(db, 'sharereq/' + shareemail), {
+      requestby: baseemail,
+      first_name: sharefirst,
+      last_name: sharelast,
+      phone: sharephone
+    });
+    return console.log("done")
+  }catch(error) {
+    console.log(error);
+  }
 }
