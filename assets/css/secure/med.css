@@ -44,3 +44,34 @@ div#input {
     height: 70rem;
     background-color: black;
 }
+
+#hide {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    visibility: visible;
+}
+#show {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    visibility: visible;
+}
