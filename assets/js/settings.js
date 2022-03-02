@@ -35,7 +35,8 @@ document.getElementById("submit").addEventListener("click", submit);
 window.onload = sessionid()
 function sessionid() {
     let text = document.getElementById("session")
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~-_!@#$%^&*()_+{}|:"<>?[]\;\',./';
+    // Optional, ~-_!@#$%^&*()_+{}|:"<>?[]\;\',./
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
     for ( var i = 0; i < 20; i++ ) {
         var result;
