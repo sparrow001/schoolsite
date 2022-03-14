@@ -7,7 +7,9 @@ var data = readUserData(user);
 if(user == '') {
     window.location.replace("../index.html");
 }else {
-    window.title = user
+    data.then(data => {
+        localStorage.setItem('User', JSON.stringify(data));
+    })
 }
 
 

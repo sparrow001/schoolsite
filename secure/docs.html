@@ -11,12 +11,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script type="module" src="../assets/js/secure/dash.js"></script>
+    <!-- <script type="module" src="../assets/js/secure/dash.js"></script> -->
+    <script type="module" src="../assets/js/secure/playlist.js"></script>
     <script type="module" src="../assets/js/secure/medhandler.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
 </head>
 <body>
+    <div id="modal"></div>
     <header>
         <nav class="topnav">
             <ul>
@@ -32,11 +34,106 @@
             </ul>
         </nav>
     </header>
+    <div id="mainlistcontainer">
+        <img id="closebutton" src="../assets/img/general/x-light.svg" alt="close">
+        <div id="playlistContainer">
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+            <div class="modal-playlist-item">
+                <a style="text-decoration: none;">
+                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
+                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
+                </a>
+            </div>
+        </div>
+    </div>
     <div id="input">
-        <div id="input-content">
+        <div class="input-content" id="regularForm">
             <input id="medinput" type="text" required>
-            <button id="medsub">Try</button>
+            <button class="medsub" id="medsub">Try</button>
         </div>   
+        <div class="input-content" id="addPlaylistForm">
+            <input class="newinputs" id="pname" type="text" required placeholder="Playlist Name">
+            <input class="newinputs" id="songs" type="text" required placeholder="Song links, separated by a comma">
+            <br>
+            <button class="medsub" id="addmedsub">Try</button>
+        </div>   
+        <div id="playlist-click">
+            <a style="text-decoration: none;">
+                <img src="../assets/img/secure/list.svg" alt="Document" class="playlist-image">
+                <p class="playlist-text">View Playlists</p>
+            </a>
+        </div>
+        <div id="playlist-add">
+            <a style="text-decoration: none;">
+                <img src="../assets/img/general/plus.svg" alt="Document" class="playlist-image" id="add-playlist-image">
+                <p class="playlist-text" id="add-playlist-text">Add Playlist</p>
+            </a>
+        </div>
     </div>
     <div style="margin: 1%;">
         <p>Document viewing is currently disabled due to a security exploit. There is no ETA available, as the library needs to be updated.</p>

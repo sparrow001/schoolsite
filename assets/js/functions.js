@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue, get, child, set} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
+import { getDatabase, ref, onValue, get, child, set, update } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 const firebaseConfig = {
@@ -62,6 +62,21 @@ export function startReadUserData(email) {
     })
 }
 
+export function writeNewPlaylist(email, songs, name) {
+    if (Object.prototype.toString.call(songs) != '[object Array]') {
+      return new Error("songs must be an array");
+    }else {
+    }
+    let db = getDatabase();
+    const newlistRef = ref(db, "playlists/" + btoa(name));
+    const userRef = ref(db, "users/" + btoa(email) + "/" + "playlists/" + btoa(name));
+    const newPlaylist = {
+        name: btoa(name),
+        songs: songs
+    };
+    set(newlistRef, newPlaylist);
+    update(userRef, newPlaylist)
+}
 export function readUserData(email) {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `users/${btoa(email)}`)).then(snapshot => {
@@ -76,24 +91,24 @@ export function readUserData(email) {
   
 }
 
+export function getUserPlaylists(email) {
+    const dbRef = ref(getDatabase());
+    return get(child(dbRef, `users/${btoa(email)}/playlists`)).then(snapshot => {
+        if (snapshot.exists()) {
+            return snapshot.val();
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+export function appendNewPlaylistDiv(name) {
+
+}
 export async function request(url) {
   let response = await fetch(url);
   let data = await response.json();
   return data;
-}
-
-export function writeShare(baseemail, shareemail, sharefirst, sharelast, sharephone = null) {
-  const db = getDatabase();
-  try {
-    console.log(arguments)
-    set(ref(db, 'sharereq/' + shareemail), {
-      requestby: baseemail,
-      first_name: sharefirst,
-      last_name: sharelast,
-      phone: sharephone
-    });
-    return console.log("done")
-  }catch(error) {
-    console.log(error);
-  }
 }

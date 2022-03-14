@@ -1,3 +1,9 @@
+body {
+    overflow: hidden; /* Hide scrollbars */
+    align-items: center;
+    justify-content: center;
+}
+
 div#input {
     background-color: white;
     border: 2px solid black;
@@ -11,8 +17,9 @@ div#input {
     align-items: center;
     justify-content: center;
 }
-#input-content {
+.input-content {
     margin: 22%;
+    margin-bottom: 5%;
     text-align: center;
 }
 
@@ -24,7 +31,34 @@ div#input {
     background-color: rgb(172, 172, 172);
     caret-color: white;
 }
+
+#addPlaylistForm {
+    display:none;
+}
+.newinputs {
+    width: 50%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(172, 172, 172);
+    caret-color: white;
+    margin: 1%
+}
 #medsub {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+}
+
+.medsub {
     background-color: #CDCDCD;
     color:black;
     border: 1px solid black;
@@ -74,4 +108,110 @@ div#input {
     margin-left: 1%;
     margin-bottom: 1%;
     visibility: visible;
+}
+
+#playlist-click {
+    width: 10%;
+    height: 40%;
+    display: inline-block;
+    border: 3px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: top;
+    justify-content: center;
+    margin: 1%;
+    padding: 1%;
+    text-decoration: none;
+}
+
+#playlist-add {
+    width: 10%;
+    height: 40%;
+    display: inline-block;
+    border: 3px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: top;
+    justify-content: center;
+    margin: 1%;
+    padding: 1%;
+    text-decoration: none;
+}
+.playlist-image {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 1%;
+    margin-right: 2%;
+}
+
+.playlist-text {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.modal-playlist-item {
+    display: inline-block;
+    border: 3px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+    text-decoration: none;
+    word-break: break-all;
+    max-width: 10%;
+    min-width: 10%;
+}
+.modal-playlist-image {
+    width: 90%;
+    height: auto;
+}
+
+.modal-playlist-text {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    margin: 3%;
+}
+#modal {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    background-color: rgba(46, 46, 46, 0.767);
+}
+
+#playlistContainer{
+    background-color:white;
+    display: block;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    top: 40%;
+    margin: 0 auto;
+    padding: 1%;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    display: none;
+    max-width: 98%;
+}
+
+#mainlistcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#closebutton {
+    width: 5vh;
+    position: absolute;
+    top: 33%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: none;
 }

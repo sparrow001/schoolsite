@@ -1,4 +1,4 @@
-import {writeShare, getCookie} from "../functions.js";
+import { getCookie } from "../functions.js";
 import { getDatabase, ref, set} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
 
 
