@@ -37,3 +37,11 @@ Check out your dashboard and choose:
 1. Edit any of your account settings that you specified in the beginning.
 2. Some will require additional security steps, such as changing your password.
 3. You can also clear data or delete your account.
+
+## Currently Implemented Features
+1. Youtube playing
+2. Some Games
+3. Sharing
+4. Tutorials
+5. Instant logout and exit.
+
