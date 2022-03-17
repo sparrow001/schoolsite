@@ -67,8 +67,11 @@ function newPlaylist() {
                 }
             });
         }
+        
         results = results.join(",")
         writeNewPlaylist(results, pname);
+        pname = document.getElementById("pname");
+        songlist = document.getElementById("songs")
         password.value = "";
         pname.value = "";
         songlist.value = "";
