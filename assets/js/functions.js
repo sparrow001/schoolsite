@@ -12,7 +12,11 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
-
+function getUserInfo() {
+  let string = localStorage.getItem("UserComplex")
+  let user = JSON.parse(string)
+  return user
+}
 
 export function setcookiehour(name, value) {
     var now = new Date();
@@ -53,60 +57,51 @@ export function updateUserData(data) {
     document.getElementById("#welcome").innerHTML = document.getElementById("#welcome").innerHTML + " " + data.display_name;
     document.getElementById("#description").innerHTML = data.token;
 }
-export function startReadUserData(email) {
-    let db = getDatabase();
-    const userRef = ref(db, "users/" + btoa(email));
-    onValue(userRef, (snapshot) => {
-      const data = snapshot.val();
-      updateUserData(data);
-    })
-}
 
-export function writeNewPlaylist(email, songs, name) {
-    if (Object.prototype.toString.call(songs) != '[object Array]') {
-      return new Error("songs must be an array");
+export function writeNewPlaylist(songs, name) {
+    songs = songs.split(",");
+    if (songs instanceof Array) {
     }else {
+      return new Error("songs must be array")
+    }
+    if (name == null) {
+      return new Error("name cannot be null")
     }
     let db = getDatabase();
-    const newlistRef = ref(db, "playlists/" + btoa(name));
-    const userRef = ref(db, "users/" + btoa(email) + "/" + "playlists/" + btoa(name));
+    const userRef = ref(db, "users/" + getUserInfo().uid + "/" + "playlists/" + btoa(name.toLowerCase()));
     const newPlaylist = {
         name: btoa(name),
         songs: songs
     };
-    set(newlistRef, newPlaylist);
-    update(userRef, newPlaylist)
+    return update(userRef, newPlaylist)
 }
-export function readUserData(email) {
+export function readUserData(email, type="general") {
   const dbRef = ref(getDatabase());
-  return get(child(dbRef, `users/${btoa(email)}`)).then(snapshot => {
-    if (snapshot.exists()) {
-      return snapshot.val();
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
+  if (type=="general") {
+    return get(child(dbRef, `users/${getUserInfo().uid}`)).then(snapshot => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+  else if (type=="playlists") {
+    return get(child(dbRef, `users/${getUserInfo().uid}/playlists`)).then(snapshot => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
   
 }
 
-export function getUserPlaylists(email) {
-    const dbRef = ref(getDatabase());
-    return get(child(dbRef, `users/${btoa(email)}/playlists`)).then(snapshot => {
-        if (snapshot.exists()) {
-            return snapshot.val();
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error(error);
-    });
-}
-
-export function appendNewPlaylistDiv(name) {
-
-}
 export async function request(url) {
   let response = await fetch(url);
   let data = await response.json();

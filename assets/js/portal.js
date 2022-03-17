@@ -4,11 +4,13 @@ import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-
 
 const user = getCookie("user");
 var data = readUserData(user);
+var playlistData = readUserData(user, "playlists");
 if(user == '') {
     window.location.replace("../index.html");
 }else {
     data.then(data => {
         localStorage.setItem('User', JSON.stringify(data));
+        localStorage.setItem('Playlists', JSON.stringify(playlistData));
     })
 }
 

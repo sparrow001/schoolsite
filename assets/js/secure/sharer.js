@@ -15,7 +15,7 @@ function share() {
     const db = getDatabase();
     if (fname != "" && lname != "" && email != "") {
         try {
-            set(ref(db, 'sharereq/' + btoa(email)), {
+            set(ref(db, 'sharereq/' + JSON.parse(localStorage.getItem("UserComplex")).uid), {
                 requestby: btoa(user),
                 first_name: fname,
                 last_name: lname,

@@ -93,6 +93,38 @@ div#input {
     margin-bottom: 1%;
     visibility: visible;
 }
+
+#shuffle {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    display:none;
+}
+
+#next {
+    background-color: #CDCDCD;
+    color:black;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    display: none;
+}
 #show {
     background-color: #CDCDCD;
     color:black;
@@ -160,12 +192,10 @@ div#input {
     padding: 1%;
     text-decoration: none;
     word-break: break-all;
-    max-width: 10%;
     min-width: 10%;
 }
 .modal-playlist-image {
-    width: 90%;
-    height: auto;
+    width: 10em;
 }
 
 .modal-playlist-text {
@@ -213,4 +243,14 @@ div#input {
     border: 2px solid black;
     border-radius: 10px;
     display: none;
+}
+
+#errormsg {
+    color:red;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'PT Serif', sans-serif;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
 }

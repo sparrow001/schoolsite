@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <script type="module" src="../assets/js/secure/dash.js"></script> -->
+    <script type="module" src="../assets/js/secure/dash.js"></script>
     <script type="module" src="../assets/js/secure/playlist.js"></script>
     <script type="module" src="../assets/js/secure/medhandler.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
@@ -37,78 +37,6 @@
     <div id="mainlistcontainer">
         <img id="closebutton" src="../assets/img/general/x-light.svg" alt="close">
         <div id="playlistContainer">
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
-            <div class="modal-playlist-item">
-                <a style="text-decoration: none;">
-                    <img src="../assets/img/secure/list.svg" alt="Document" class="modal-playlist-image">
-                    <p class="modal-playlist-text">Playlistfdsfsdfsdfaerhfbgdfb</p>
-                </a>
-            </div>
         </div>
     </div>
     <div id="input">
@@ -118,7 +46,10 @@
         </div>   
         <div class="input-content" id="addPlaylistForm">
             <input class="newinputs" id="pname" type="text" required placeholder="Playlist Name">
-            <input class="newinputs" id="songs" type="text" required placeholder="Song links, separated by a comma">
+            <input class="newinputs" id="songs" type="text" required placeholder="video links, separated by a comma">
+            <input class="newinputs" id="pass" type="password" required placeholder="Password">
+            <br>
+            <p id="errormsg"></p>
             <br>
             <button class="medsub" id="addmedsub">Try</button>
         </div>   

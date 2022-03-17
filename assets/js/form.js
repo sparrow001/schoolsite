@@ -59,6 +59,7 @@ auth.onAuthStateChanged(user =>{
         alert("Signed In " + user.email)
         errmsg.innerHTML = "";
         setcookiehour("user", user.email);
+        localStorage.setItem("UserComplex", JSON.stringify(user));
         window.onbeforeunload = null;
         window.location.replace("/schoolsite/portal/dash.html");
     }
