@@ -57,7 +57,7 @@ async function playlistAutoPlay() {
     let listauto = getCookie("listauto")
     listauto = JSON.parse(listauto)
     var url = "https://redir.sparrow001.workers.dev/" + listauto[0];
-
+    var videoposter = "https://img.youtube.com/vi/" + listauto[0] + "/hqdefault.jpg"
     let medresponse = await fetch(url, {
         method: 'GET',
     });
@@ -66,6 +66,7 @@ async function playlistAutoPlay() {
     source.setAttribute('src', final);
     source.setAttribute('type', 'video/mp4');
     player.setAttribute('autoplay', "")
+    player.setAttribute('poster', videoposter)
     player.load()
     player.appendChild(source);
     listauto.shift()
