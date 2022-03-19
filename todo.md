@@ -7,6 +7,7 @@
     1. Hide
     2. Show
     3. Loop
+    4. Shuffle
 3. Get video thumbnail, add that instead of video placeholder (put video placeholder for beginning, but code change)
 
 
