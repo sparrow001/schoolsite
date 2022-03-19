@@ -17,5 +17,6 @@
 2. Detailed titles
     - `"Adding \[feature]"` or `"Fixing \[feature]"` or `"Style change for \[page]"`
 
+3. Or just follow the format!
 
 #### That is it!
