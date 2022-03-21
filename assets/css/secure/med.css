@@ -153,6 +153,7 @@ div#input {
     margin: 1%;
     padding: 1%;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #playlist-add {
@@ -167,6 +168,7 @@ div#input {
     margin: 1%;
     padding: 1%;
     text-decoration: none;
+    cursor: pointer;
 }
 .playlist-image {
     width: 90%;
@@ -243,6 +245,7 @@ div#input {
     border: 2px solid black;
     border-radius: 10px;
     display: none;
+    cursor: pointer;
 }
 
 #errormsg {
