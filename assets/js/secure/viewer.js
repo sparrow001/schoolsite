@@ -31,6 +31,7 @@ if (medid == null) {
     medid = atob(medid.split(" ")[1])
     console.log(medid)
     var url = "https://redir.sparrow001.workers.dev/" + medid
+    var videoposter = "https://img.youtube.com/vi/" + medid + "/hqdefault.jpg"
     let response = await fetch(url, {
         method: 'GET',
     })
@@ -38,6 +39,8 @@ if (medid == null) {
 
     source.setAttribute('src', final);
     source.setAttribute('type', 'video/mp4');
+    player.setAttribute('poster', videoposter)
+    player.load()
     
     player.appendChild(source);
     
