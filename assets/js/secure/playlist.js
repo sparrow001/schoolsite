@@ -93,6 +93,7 @@ function addPlaylistInputOpener() {
     normalForm.style.display = "none";
     image.src = "../assets/img/general/corner-down-left.svg";
     text.innerHTML = "Cancel";
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
     document.getElementById("playlist-add").removeEventListener("click", addPlaylistInputOpener);
     document.getElementById("playlist-add").addEventListener("click", addPlaylistInputCloser);
 }
@@ -102,6 +103,7 @@ function addPlaylistInputCloser() {
     let normalForm = document.getElementById("regularForm");
     let image = document.getElementById("add-playlist-image");
     let text = document.getElementById("add-playlist-text");
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
     addPlaylistForm.style.display = "none";
     normalForm.style.display = "block";
     image.src = "../assets/img/general/plus.svg";

@@ -1,6 +1,5 @@
-window.onload = function() {
-    document.getElementById("titlebutton").addEventListener("click", titlehandler);
-}
+window.onload = document.getElementById("titlebutton").addEventListener("click", titlehandler);
+
 
 
 function titlehandler() {

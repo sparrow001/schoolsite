@@ -23,13 +23,13 @@ if(user == '') {
 }
 
 // Initialize Firebase
-
-window.onload = function() {
+function handleload() {
     if (sessionStorage.getItem("customtitle") != null) {
         document.title = atob(sessionStorage.getItem("customtitle"))
     }else {
     }
 }
+window.onload = handleload()
 window.onbeforeunload = function() {
     deleteCookie("user");
     signOut(auth)
