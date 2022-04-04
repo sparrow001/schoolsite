@@ -246,6 +246,8 @@ function addRoomClickEventListeners() {
       room.addEventListener('click', (event) => {
         for (let i in event.path) {
             if (event.path[i].className == 'roomitem') {
+                let sendbutton = document.getElementById("messagesend")
+                sendbutton.removeAttribute('disabled')
                 try { document.getElementsByClassName("roomitemselected")[0].className = "roomitem" } catch (e) {}
                 event.path[i].className = "roomitem roomitemselected"
                 getMessagesForRoom(event.path[i].id)
