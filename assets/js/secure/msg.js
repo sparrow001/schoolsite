@@ -1,8 +1,8 @@
 import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js';
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
+import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
 import { getFirestore, collection, onSnapshot, orderBy, query, doc } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
-import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, getMessagesFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead } from "./msgfunctions.js";
+import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
 
 const config = {
