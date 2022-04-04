@@ -56,7 +56,6 @@ window.onbeforeunload = function() {
 }
 auth.onAuthStateChanged(user =>{
     if(user){
-        alert("Signed In " + user.email)
         errmsg.innerHTML = "";
         setcookiehour("user", user.email);
         localStorage.setItem("UserComplex", JSON.stringify(user));
@@ -64,6 +63,5 @@ auth.onAuthStateChanged(user =>{
         window.location.replace("/schoolsite/portal/dash.html");
     }
     else{
-        alert("Signed Out")
     }
 })

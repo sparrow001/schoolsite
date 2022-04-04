@@ -8,7 +8,7 @@
 }
 
 body {
-    background-image: url("/schoolsite/assets/img/index/bkground.gif");
+    background-image: url("../../img/index/bkground.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }

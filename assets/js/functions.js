@@ -75,6 +75,19 @@ export function writeNewPlaylist(songs, name) {
     };
     return update(userRef, newPlaylist)
 }
+
+export function getUserFromUid(uid) {
+  const dbRef = ref(getDatabase());
+  return get(child(dbRef, `users/${uid}`)).then(snapshot => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
 export function readUserData(email, type="general") {
   const dbRef = ref(getDatabase());
   if (type=="general") {

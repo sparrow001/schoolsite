@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 function newPlaylist() {
     let password = document.getElementById("pass"); 
-    const promise = signInWithEmailAndPassword(auth, "sparrow001discord@gmail.com", password.value);
+    const promise = signInWithEmailAndPassword(auth, JSON.parse(localStorage.getItem("UserComplex").email), password.value);
     promise.catch((e) => {
         error(e.message)
         return
@@ -89,11 +89,13 @@ function addPlaylistInputOpener() {
     let normalForm = document.getElementById("regularForm");
     let image = document.getElementById("add-playlist-image");
     let text = document.getElementById("add-playlist-text");
+    let modal = document.getElementById("playlist-click")
+    modal.style.display = "none"
     addPlaylistForm.style.display = "block";
     normalForm.style.display = "none";
     image.src = "../assets/img/general/corner-down-left.svg";
     text.innerHTML = "Cancel";
-    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    
     document.getElementById("playlist-add").removeEventListener("click", addPlaylistInputOpener);
     document.getElementById("playlist-add").addEventListener("click", addPlaylistInputCloser);
 }
@@ -103,11 +105,12 @@ function addPlaylistInputCloser() {
     let normalForm = document.getElementById("regularForm");
     let image = document.getElementById("add-playlist-image");
     let text = document.getElementById("add-playlist-text");
-    document.getElementsByTagName("body")[0].style.overflow = "auto";
+    let modal = document.getElementById("playlist-click")
     addPlaylistForm.style.display = "none";
     normalForm.style.display = "block";
     image.src = "../assets/img/general/plus.svg";
     text.innerHTML = "Add Playlists";
+    modal.style.display = "inline-block"
     document.getElementById("playlist-add").removeEventListener("click", addPlaylistInputCloser);
     document.getElementById("playlist-add").addEventListener("click", addPlaylistInputOpener);
 }
@@ -136,6 +139,7 @@ function close() {
     var container = document.getElementById("playlistContainer");
     var modal = document.getElementById("modal")
     var closebutton = document.getElementById("closebutton")
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
     modal.style.display = "none";
     container.style.display = "none";
     closebutton.style.display = "none";
@@ -144,9 +148,11 @@ function playlist() {
     var container = document.getElementById("playlistContainer");
     var modal = document.getElementById("modal")
     var closebutton = document.getElementById("closebutton")
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
     modal.style.display = "block";
     container.style.display = "block";
     closebutton.style.display = "block";
+    
     
 }
 // function share() {

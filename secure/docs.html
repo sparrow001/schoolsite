@@ -1,78 +1,146 @@
 <!DOCTYPE html>
-<html lang ="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>School Site - Documents</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/secure/style.css">
-    <link rel="stylesheet" href="../assets/css/secure/med.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/secure/style.css" />
+    <link rel="stylesheet" href="../assets/css/secure/med.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="module" src="../assets/js/secure/dash.js"></script>
     <script type="module" src="../assets/js/secure/playlist.js"></script>
     <script type="module" src="../assets/js/secure/medhandler.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div id="modal"></div>
     <header>
-        <nav class="topnav">
-            <ul>
-                <li><a id="redirpage" href="dash.html" class="title">School Site</a></li>
-                <li><a id="redirpage" href="tutorials/entrance.html" class="items"><img src="../assets/img/secure/help.svg" 
-                    alt="Tutorials" href="tutorials/entrance.html"></a></li>
-                    <li><a id="redirpage" href="settings.html" class="items"><img src="../assets/img/general/settings.svg" alt="settings"></a></li>
-                <li><a id="redirpage" href="classes.html" class="items"><img src="../assets/img/secure/monitor.svg"></a></li>
-                <li><a id="redirpage" href="share.html" class="items"><img src="../assets/img/secure/share.svg"
-                    alt="Share"></a></li>
-                    <li><a id="redirpage" href="chat.html" class="items"><img src="../assets/img/secure/chat.svg" alt="Developers"></a></li>
-                <li><a id="redirpage" href="#" class="activenav items"><img src="../assets/img/secure/med.svg" alt="Documents"></a></li>
-                <li><a id="redirpage" href="dash.html" class="items"><img src="../assets/img/general/home.svg" alt="Home"></a></li>
-
-            </ul>
-        </nav>
+      <nav class="topnav">
+        <ul>
+          <li>
+            <a id="redirpage" href="dash.html" class="title">School Site</a>
+          </li>
+          <li>
+            <a id="redirpage" href="tutorials/entrance.html" class="items"
+              ><img
+                src="../assets/img/secure/help.svg"
+                alt="Tutorials"
+                href="tutorials/entrance.html"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="settings.html" class="items"
+              ><img src="../assets/img/general/settings.svg" alt="settings"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="classes.html" class="items"
+              ><img src="../assets/img/secure/monitor.svg"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="share.html" class="items"
+              ><img src="../assets/img/secure/share.svg" alt="Share"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="chat.html" class="items"
+              ><img src="../assets/img/secure/chat.svg" alt="Developers"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="#" class="activenav items"
+              ><img src="../assets/img/secure/med.svg" alt="Documents"
+            /></a>
+          </li>
+          <li>
+            <a id="redirpage" href="dash.html" class="items"
+              ><img src="../assets/img/general/home.svg" alt="Home"
+            /></a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <div id="mainlistcontainer">
-        <img id="closebutton" src="../assets/img/general/x-light.svg" alt="close">
-        <div id="playlistContainer">
-        </div>
+      <img
+        id="closebutton"
+        src="../assets/img/general/x-light.svg"
+        alt="close"
+      />
+      <div id="playlistContainer"></div>
     </div>
     <div id="input">
-        <div class="input-content" id="regularForm">
-            <input id="medinput" type="text" required>
-            <button class="medsub" id="medsub">Try</button>
-        </div>   
-        <div class="input-content" id="addPlaylistForm">
-            <input class="newinputs" id="pname" type="text" required placeholder="Playlist Name">
-            <input class="newinputs" id="songs" type="text" required placeholder="video links, separated by a comma">
-            <input class="newinputs" id="pass" type="password" required placeholder="Password">
-            <br>
-            <p id="errormsg"></p>
-            <br>
-            <button class="medsub" id="addmedsub">Try</button>
-        </div>   
-        <div id="playlist-click">
-            <a style="text-decoration: none;">
-                <img src="../assets/img/secure/list.svg" alt="Document" class="playlist-image">
-                <p class="playlist-text">View Playlists</p>
-            </a>
-        </div>
-        <div id="playlist-add">
-            <a style="text-decoration: none;">
-                <img src="../assets/img/general/plus.svg" alt="Document" class="playlist-image" id="add-playlist-image">
-                <p class="playlist-text" id="add-playlist-text">Add Playlist</p>
-            </a>
-        </div>
+      <div class="input-content" id="regularForm">
+        <input id="medinput" type="text" required />
+        <button class="medsub" id="medsub">Try</button>
+      </div>
+      <div class="input-content" id="addPlaylistForm">
+        <input
+          class="newinputs"
+          id="pname"
+          type="text"
+          required
+          placeholder="Playlist Name"
+        />
+        <input
+          class="newinputs"
+          id="songs"
+          type="text"
+          required
+          placeholder="video links, separated by a comma"
+        />
+        <input
+          class="newinputs"
+          id="pass"
+          type="password"
+          required
+          placeholder="Password"
+        />
+        <br />
+        <p id="errormsg"></p>
+        <br />
+        <button class="medsub" id="addmedsub">Try</button>
+      </div>
+      <div id="playlist-click">
+        <a style="text-decoration: none">
+          <img
+            src="../assets/img/secure/list.svg"
+            alt="Document"
+            class="playlist-image"
+          />
+          <p class="playlist-text">View Playlists</p>
+        </a>
+      </div>
+      <div id="playlist-add">
+        <a style="text-decoration: none">
+          <img
+            src="../assets/img/general/plus.svg"
+            alt="Document"
+            class="playlist-image"
+            id="add-playlist-image"
+          />
+          <p class="playlist-text" id="add-playlist-text">Add Playlist</p>
+        </a>
+      </div>
     </div>
-    <div style="margin: 1%;">
-        <p>Document viewing is currently disabled due to a security exploit. There is no ETA available, as the library needs to be updated.</p>
+    <div style="margin: 1%">
+      <p>
+        Document viewing is currently disabled due to a security exploit. There
+        is no ETA available, as the library needs to be updated.
+      </p>
     </div>
     <footer>
-        <p>&copy 2022 School Site</p>
+      <p>&copy 2022 School Site</p>
     </footer>
-</body>
+  </body>
 </html>
