@@ -2,7 +2,7 @@ import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
 import { getFirestore, collection, onSnapshot, orderBy, query, doc } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
-import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, getMessagesFromRoomId, sendMessage, addNewDMRoom } from "./msgfunctions.js";
+import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, getMessagesFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
 
 const config = {
@@ -182,6 +182,11 @@ async function handlenewroom() {
             username.innerText = ""
             password.innerText = ""
             return
+        } else if (newroom == "nouse") {
+            error("User does not exist")
+            username.innerText = ""
+            password.innerText = ""
+            return
         }
         closemodal();
         await redoAppendagesAfterAddRoom()
@@ -251,6 +256,7 @@ function addRoomClickEventListeners() {
                 try { document.getElementsByClassName("roomitemselected")[0].className = "roomitem" } catch (e) {}
                 event.path[i].className = "roomitem roomitemselected"
                 getMessagesForRoom(event.path[i].id)
+                setRoomAsRead(event.path[i].id)
             }
         }
       });

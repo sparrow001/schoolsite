@@ -97,6 +97,9 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   if (returner.length > 1) {
     return "duplicate"
   }
+  if (returner.length == 0) {
+    return "nouser"
+  }
   try {
     let receiver = await addDoc(collection(getFirestore(), 'users/'+ returner[0].id + '/rooms'), {
       lastAccessed: serverTimestamp(),
@@ -126,4 +129,11 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   catch {
     console.error('Error writing new room to Firebase Database for room collection', error);
   }
+}
+
+export async function setRoomAsRead(roomid) {
+  const theref = doc(getFirestore(), "users", JSON.parse(localStorage.getItem("UserComplex")).uid, roomid)
+  await updateDoc(theref, {
+    newmessage: false
+  })
 }
