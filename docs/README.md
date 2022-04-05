@@ -20,7 +20,8 @@ Check out your dashboard and choose:
   2. View Tutorials
   3. View account settings
   4. View sharing page
-  5. Go back to dashboard
+  5. View Chat
+  6. Go back to dashboard
 
 ### Playing:
 1. Insert any public youtube URL (Cannot be a private video, must be public or unlisted)
@@ -33,6 +34,9 @@ Check out your dashboard and choose:
 ### Account Settings
 1. View any of your account settings that you specified in the beginning.
 
+### Chat
+1. View Tutorials for documentation.
+
 ## Currently Implemented Features
 1. Youtube playing
 2. Some Games
@@ -40,4 +44,5 @@ Check out your dashboard and choose:
 4. Tutorials
 5. Instant logout and exit.
 6. Playlists
+7. Chat
 
