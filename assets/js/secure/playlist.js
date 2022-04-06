@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 function newPlaylist() {
     let password = document.getElementById("pass"); 
-    const promise = signInWithEmailAndPassword(auth, JSON.parse(localStorage.getItem("UserComplex").email), password.value);
+    const promise = signInWithEmailAndPassword(auth, JSON.parse(localStorage.getItem("UserComplex")).email, password.value);
     promise.catch((e) => {
         error(e.message)
         return
@@ -75,6 +75,8 @@ function newPlaylist() {
         password.value = "";
         pname.value = "";
         songlist.value = "";
+        let errmsg = document.getElementById("errormsg")
+        errmsg.innerHTML = '';
     });
 }
 
@@ -155,26 +157,3 @@ function playlist() {
     
     
 }
-// function share() {
-//     var user = getCookie("user")
-//     var fname = document.getElementById("sharefirst").value;
-//     var lname = document.getElementById("sharelast").value;
-//     var phone = document.getElementById("sharephone").value;
-//     var email = document.getElementById("shareemail").value;
-//     const db = getDatabase();
-//     if (fname != "" && lname != "" && email != "") {
-//         try {
-//             set(ref(db, 'sharereq/' + btoa(email)), {
-//                 requestby: btoa(user),
-//                 first_name: fname,
-//                 last_name: lname,
-//                 phone: phone
-//             });
-//             alert("Success!")
-//         }catch(e){
-//             document.getElementById("er").innerHTML = "Error: " + e;
-//         }
-//     } else {
-//         document.getElementById("er").innerHTML = "Please fill in all required fields (marked with *)";
-//     }
-// }

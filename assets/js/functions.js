@@ -76,7 +76,7 @@ export function writeNewPlaylist(songs, name) {
     return update(userRef, newPlaylist)
 }
 
-export function getUserFromUid(uid) {
+export function getUserFromUid(uid, type="none") {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `users/${uid}`)).then(snapshot => {
     if (snapshot.exists()) {

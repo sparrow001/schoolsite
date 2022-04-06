@@ -9,6 +9,9 @@ html, body {
     --messagesendwidth: 10%;
     --messagesendheight: 90%;
 }
+::-webkit-scrollbar {
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
 
 /* Main Container */
 .chat-container {
@@ -30,6 +33,7 @@ html, body {
     width: 35%;
     border: 4px solid black;
     vertical-align: top;
+    max-height: 100%;
 }
 
 .messagewindow {
@@ -186,7 +190,6 @@ html, body {
     width: 100%;
     background-color: #44484e;
     color: white;
-    overflow: auto;
 }
 
 .messagescontainer {
@@ -195,6 +198,8 @@ html, body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 .messageitem {

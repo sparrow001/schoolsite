@@ -1,6 +1,8 @@
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getAuth} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js';
+import { getDatabase, ref, onValue, get, child, set, update } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
 import { getFirestore, collection, addDoc, query, orderBy, setDoc, updateDoc, doc, serverTimestamp, getDocs, getDoc, where } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import { getUserFromUid } from "../functions.js";
 
 const config = {
   apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
@@ -29,6 +31,25 @@ export async function sendMessage(authoruid, content, edited, reactions, type, r
     catch(error) {
       console.error('Error writing new message to Firebase Database', error);
     }
+  let recdisplayname = await getRoomDataFromRoomId(roomid)
+  let userid = await getUserFromUid(authoruid)
+  userid = userid.display_name
+  recdisplayname = recdisplayname.name.replace(/\s+/i, '')
+  recdisplayname = recdisplayname.replace(userid, '')
+  recdisplayname = recdisplayname.replace(/\s?(and)\s/g, '')
+  
+  let q = query(collection(getFirestore(app), 'users'), where("display_name", "==", recdisplayname.toLowerCase()))
+  const querySnapshot = await getDocs(q);
+  let returner = []
+  querySnapshot.forEach((doc) => {
+    returner.push(doc.id)
+  });
+  if (returner.length > 1) {
+    return "duplicate name"
+  }
+  if (getActiveRoom(returner[0]) != roomid) {
+    await setRoomAsUnread(roomid, returner[0])
+  } 
 }
 
 export async function getUnaccessedRooms(userid) {
@@ -49,7 +70,6 @@ export async function getRestOfRooms(userid) {
   querySnapshot.forEach((doc) => {
     returner.push({id: doc.id, data: doc.data()})
   });
-  
   return returner
 }
 
@@ -113,7 +133,7 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   try {
     await setDoc(doc(getFirestore(), 'users/'+ senderuid + '/rooms', recieverid), {
       lastAccessed: serverTimestamp(),
-      newMessage: true,
+      newMessage: true, 
       owner: true
     });
   }
@@ -131,8 +151,49 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
 }
 
 export async function setRoomAsRead(roomid) {
-  const theref = doc(getFirestore(), "users", JSON.parse(localStorage.getItem("UserComplex")).uid, roomid)
+  const theref = doc(getFirestore(), "users", JSON.parse(localStorage.getItem("UserComplex")).uid, "rooms", roomid)
   await updateDoc(theref, {
-    newmessage: false
+    newMessage: false
   })
+}
+
+export async function setRoomAsUnread(roomid, userid) {
+  const theref = doc(getFirestore(), "users", userid, "rooms", roomid)
+  console.log(theref)
+  await updateDoc(theref, {
+    newMessage: true
+  })
+}
+
+export function getActiveRoom(userid) {
+  let db = getDatabase();
+  const theref = get(ref(db, `/users/${userid}/activeRoom`));
+  if (theref == null) {
+    return null
+  }
+  return theref.then(snapshot => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val())
+      return snapshot.val();
+    }
+  });
+}
+
+export async function setActiveRoom(userid, roomid) {
+  let db = getDatabase();
+  set(ref(db, '/users/' + userid + '/activeRoom'), roomid);
+  const theref = doc(getFirestore(), "users", userid, "rooms", roomid);
+  await updateDoc(theref, {
+    lastAccessed: serverTimestamp()
+  })
+}
+
+export function userIsOnlineMsgSetter(uid) {
+  const db = getDatabase();
+  const statusref = ref(db, 'users/' + uid + '/lastOnline');
+  console.log(statusref)
+  onValue(statusref, (snapshot) => {
+    return snapshot.val()
+  })
+
 }

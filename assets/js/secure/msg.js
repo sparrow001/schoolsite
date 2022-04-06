@@ -1,9 +1,11 @@
 import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js';
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
+import { getStorage, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
 import { getFirestore, collection, onSnapshot, orderBy, query, doc } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
-import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead } from "./msgfunctions.js";
+import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead, userIsOnlineMsgSetter, setActiveRoom } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
+import { setPresenceListener } from "./presence.js";
 
 const config = {
     apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
@@ -24,6 +26,7 @@ document.getElementById("addroomsubmit").addEventListener("click", () => {
     handlenewroom()
 });
 
+setPresenceListener();
 
 (async () => {
     await handleAppendagesOfRooms()
@@ -40,7 +43,7 @@ function closemodal() {
 function profileUpdate() {
     let uid = "CmOQAlz2rvYg75U7R9mjxcEu0ik2"
     let storage = getStorage();
-    var storageRef = ref(storage, 'users/' + uid + '/av.png');
+    var storageRef = ref(storage, 'users/' + uid + '/av.png');   //add ref module
     console.log(storageRef)
     getDownloadURL(storageRef).then(function(url) {
         console.log(url);
@@ -67,6 +70,7 @@ async function getMessagesForRoom(roomid) {
     const recentMessagesQuery = query(collection(getFirestore(), 'rooms/' + roomid + "/messages"), orderBy('timestamp', 'asc'));
   
     // Start listening to the query.
+    
     let listener = onSnapshot(recentMessagesQuery, function(snapshot) {
       snapshot.docChanges().forEach(function(change) {
         if (change.type === 'removed') {
@@ -75,9 +79,11 @@ async function getMessagesForRoom(roomid) {
           var message = change.doc.data();
           if (!snapshot.metadata.hasPendingWrites) {
             appendMessageDiv(message.authoruid, message.content);
+            
           }
         }
       });
+      
     });
     var wait = function(condFunc, readyFunc, checkInterval) {
         var checkFunc = function() {
@@ -238,7 +244,8 @@ async function appendMessageDiv(authorid, content) {
     userdiv.appendChild(authortext)
     textdiv.appendChild(text)
     maincontainer.appendChild(maindiv)
-
+    let messageBody = document.getElementById("messagescontainer")
+    messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 }
 
 function addRoomClickEventListeners() {
@@ -257,6 +264,7 @@ function addRoomClickEventListeners() {
                 event.path[i].className = "roomitem roomitemselected"
                 getMessagesForRoom(event.path[i].id)
                 setRoomAsRead(event.path[i].id)
+                setActiveRoom(JSON.parse(localStorage.getItem("UserComplex")).uid, event.path[i].id) 
             }
         }
       });
