@@ -66,7 +66,7 @@ async function getMessagesForRoom(roomid) {
         message.remove()
     });
     let name = document.getElementById("actualname")
-    name.innerHTML = document.getElementById(roomid).innerText
+    name.innerText = document.getElementById(roomid).innerText
     const recentMessagesQuery = query(collection(getFirestore(), 'rooms/' + roomid + "/messages"), orderBy('timestamp', 'asc'));
   
     // Start listening to the query.
