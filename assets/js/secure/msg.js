@@ -1,7 +1,7 @@
 import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js';
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getStorage, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
+import { getDatabase,get, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
 import { getFirestore, collection, onSnapshot, orderBy, query, doc } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead, userIsOnlineMsgSetter, setActiveRoom } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
@@ -19,7 +19,7 @@ const config = {
 
 const app = initializeApp(config);
 const auth = getAuth(app);
-document.getElementById("messagesend").addEventListener("click", handleSend);
+document.getElementById("messagesend").addEventListener("click", test);
 document.getElementById("addnewroom").addEventListener("click", newroombutton);
 document.getElementById("closebutton").addEventListener("click", closemodal);
 document.getElementById("addroomsubmit").addEventListener("click", () => {
@@ -33,6 +33,10 @@ setPresenceListener();
     addRoomClickEventListeners()
 }) ();
 
+async function test() {
+    let test = await get(ref(getDatabase(), `/users/0y2CtModkPdZXFsLVbRVuLEnFgk2/display_name`))
+    console.log(test._node.value_)
+}
 function closemodal() {
     let modal = document.getElementById("modal")
     let modalcontent = document.getElementById("addroominputs")

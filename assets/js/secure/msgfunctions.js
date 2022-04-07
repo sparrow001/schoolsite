@@ -119,6 +119,8 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   if (returner.length == 0) {
     return "nouser"
   }
+  let titlecaserec = await get(ref(getDatabase(), `/users/${returner[0].id}/display_name`))._node.value_;
+
   try {
     let receiver = await addDoc(collection(getFirestore(), 'users/'+ returner[0].id + '/rooms'), {
       lastAccessed: serverTimestamp(),
@@ -142,7 +144,7 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   }
   try {
     await setDoc(doc(getFirestore(), 'rooms', recieverid), {
-      name: senderdisplayname + " and " + recdisplayname,
+      name: senderdisplayname + " and " + titlecaserec,
       });
   }
   catch {
@@ -173,7 +175,6 @@ export function getActiveRoom(userid) {
   }
   return theref.then(snapshot => {
     if (snapshot.exists()) {
-      console.log(snapshot.val())
       return snapshot.val();
     }
   });
