@@ -41,7 +41,7 @@ function closemodal() {
 }
 
 function profileUpdate() {
-    let uid = "CmOQAlz2rvYg75U7R9mjxcEu0ik2"
+    let uid = ""
     let storage = getStorage();
     var storageRef = ref(storage, 'users/' + uid + '/av.png');   //add ref module
     console.log(storageRef)
