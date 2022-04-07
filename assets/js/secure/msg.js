@@ -19,7 +19,7 @@ const config = {
 
 const app = initializeApp(config);
 const auth = getAuth(app);
-document.getElementById("messagesend").addEventListener("click", test);
+document.getElementById("messagesend").addEventListener("click", handleSend);
 document.getElementById("addnewroom").addEventListener("click", newroombutton);
 document.getElementById("closebutton").addEventListener("click", closemodal);
 document.getElementById("addroomsubmit").addEventListener("click", () => {
@@ -33,10 +33,6 @@ setPresenceListener();
     addRoomClickEventListeners()
 }) ();
 
-async function test() {
-    let test = await get(ref(getDatabase(), `/users/0y2CtModkPdZXFsLVbRVuLEnFgk2/display_name`))
-    console.log(test._node.value_)
-}
 function closemodal() {
     let modal = document.getElementById("modal")
     let modalcontent = document.getElementById("addroominputs")
