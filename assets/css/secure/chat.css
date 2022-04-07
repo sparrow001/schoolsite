@@ -65,6 +65,7 @@ html, body {
 .actuallist {
     height: 90%;
     overflow-y:auto;
+    overflow-x: auto;
     background-color: #44484e;
     color: rgba(235, 235, 235, 0.952);
 }
