@@ -2,7 +2,7 @@ import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getStorage, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
 import { getDatabase,get, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
-import { getFirestore, collection, onSnapshot, orderBy, query, doc } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, orderBy, query, doc, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead, userIsOnlineMsgSetter, setActiveRoom } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
 import { setPresenceListener } from "./presence.js";
@@ -112,19 +112,19 @@ async function handleAppendagesOfRooms() {
     for (let i in room) {
         const data = await getRoomDataFromRoomId(room[i].id)
         if (data.name != null) {
-            roomnames.push({name: data.name, id: room[i].id.replace(/\s/g, '')})
+            roomnames.push({name: data.name, id: room[i].id.replace(/\s/g, ''), profurl: data.profilepicurl})
         }   
     }
     room = await getRestOfRooms(usercomplex.uid)
     for (let i in room) {
         const data = await getRoomDataFromRoomId(room[i].id)
         if (data.name != null) {
-            roomnames.push({name: data.name, id: room[i].id.replace(/\s/g, '')})
+            roomnames.push({name: data.name, id: room[i].id.replace(/\s/g, ''), profurl: data.profilepicurl})
         }   
     }
 
     for (let i = 0; i < roomnames.length; i++) {
-        appendRoomDiv(roomnames[i].id, roomnames[i].name)
+        appendRoomDiv(roomnames[i].id, roomnames[i].name, (roomnames[i].profurl == null) ? null: roomnames[i].profurl )
     }
 }
 
@@ -166,43 +166,66 @@ function newroombutton() {
 async function handlenewroom() {
     var username = document.getElementById("username")
     var password = document.getElementById("password")
+    var roomname = document.getElementById("roomnameinput")
+    var roomprofpic = document.getElementById("roomprofinput")
     var uid = JSON.parse(localStorage.getItem('UserComplex')).uid
     const promise = signInWithEmailAndPassword(auth, getCookie("user"), password.value);
     promise.catch((e) => {
         error(e.message)
         username.innerText = ""
+        roomname.innerText = ""
         password.innerText = ""
+        roomprofpic.innerText = ""
         return
     });
     promise.then(async(data) => {
         var username = document.getElementById("username")
         var password = document.getElementById("password")
-        let newroom = await addNewDMRoom(username.value, uid, JSON.parse(localStorage.getItem('User')).display_name)
+        var roomname = document.getElementById("roomnameinput")
+        var roomprofpic = document.getElementById("roomprofinput")
+        username = username.value.split(",").map(s => s.slice((s.indexOf(" ") == 0) ? 1: null))
+        let newroom = await addNewDMRoom(username, uid, JSON.parse(localStorage.getItem('User')).display_name, roomname.value, roomprofpic.value)
+        username = document.getElementById("username")
         if (newroom == "duplicate") {
             error("Two users. Implementation coming soon")
-            username.innerText = ""
-            password.innerText = ""
+            username.innerHTML = ""
+            password.innerHTML = ""
+            roomname.innerHTML = ""
+            roomprofpic.innerHTML = ""
             return
         } else if (newroom == "exists") {
             error("Room already exists")
-            username.innerText = ""
-            password.innerText = ""
+            username.innerHTML = ""
+            password.innerHTML = ""
+            roomname.innerHTML = ""
+            roomprofpic.innerHTML = ""
             return
         } else if (newroom == "nouse") {
             error("User does not exist")
-            username.innerText = ""
-            password.innerText = ""
+            username.innerHTML = ""
+            password.innerHTML = ""
+            roomname.innerHTML = ""
+            roomprofpic.innerHTML = ""
+            return
+        } else if (newroom == "urlinvalid") {
+            error("Invalid URL")
+            username.innerHTML = ""
+            password.innerHTML = ""
+            roomprofpic.innerHTML = ""
+            roomname.innerHTML = ""
             return
         }
+        username.innerHTML = ""
+        password.innerHTML = ""
+        roomname.innerHTML = ""
+        roomprofpic.innerHTML = ""
         closemodal();
         await redoAppendagesAfterAddRoom()
-        username.innerText = ""
-        password.innerText = ""
+
     })
 
 }
-
-function appendRoomDiv(roomid, roomname) {
+function appendRoomDiv(roomid, roomname, roomimage = "../assets/img/personalization/placeav.png") {
     let maincontainer = document.getElementById("mainroomlistcontainer")
     let addroom = document.getElementById("addnewroom")
     let maindiv = document.createElement('div')
@@ -210,8 +233,8 @@ function appendRoomDiv(roomid, roomname) {
     let text = document.createElement('p')
     maindiv.className = 'roomitem'
     image.className = "roomavimg"
-    maindiv.id = roomid
-    image.src = "../assets/img/personalization/placeav.png"
+    maindiv.id = roomid 
+    image.src = roomimage == "../assets/img/personalization/placeav.png" || roomimage == null || roomimage == "default" ? "../assets/img/personalization/placeav.png" : roomimage
     text.innerHTML = roomname
     maindiv.appendChild(image)
     maindiv.appendChild(text)

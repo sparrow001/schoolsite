@@ -96,8 +96,88 @@ export async function getRoomDataFromRoomId(roomid) {
   }
 }
 
-export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname) {
-  let qw = query(collection(getFirestore(app), 'rooms'), where("name", "in", [recdisplayname + " and " + senderdisplayname, senderdisplayname + " and " + recdisplayname]));
+export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname, groupname = null, profilepic = null) {
+  console.log(recdisplayname)
+  if (await testImage(profilepic) != "success") {
+    if (profilepic == null || profilepic == "" || profilepic == undefined || profilepic == " ") {
+    }else {
+      return "urlinvalid"
+    }
+  }
+  if (!(recdisplayname instanceof Array)) {
+    return "must be array"
+  }else if (recdisplayname.length > 1) {
+    let wholeids = [];
+    let q = query(collection(getFirestore(app), 'users'), where("display_name", "==", recdisplayname[0].toLowerCase()))
+    const querySnapshot = await getDocs(q);
+    let firstreturn = []
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id)
+      firstreturn.push(doc.id)
+      wholeids.push(doc.id)
+    });
+    
+    let recieverid
+    try {
+      let receiver = await addDoc(collection(getFirestore(), 'users/'+ firstreturn[0] + '/rooms'), {
+        lastAccessed: serverTimestamp(),
+        newMessage: true,
+        owner: false
+      });
+      recieverid = receiver.id
+    }
+    catch(error) {
+      console.error('Error writing new room to Firebase Database for reciever first: ', error);
+    } 
+    recdisplayname.slice(1)
+    for (let i in recdisplayname) {
+      let q = query(collection(getFirestore(app), 'users'), where("display_name", "==", recdisplayname[i].toLowerCase()))
+      const querySnapshot = await getDocs(q);
+      let returner = []
+      querySnapshot.forEach((doc) => {
+        returner.push(doc.id)
+        wholeids.push(doc.id)
+      });
+      if (returner.length > 1) {
+        return "duplicate name"
+      }
+      if (returner.length == 0) {
+        return "nouser"
+      }
+      try {
+        let reciever = await setDoc(doc(getFirestore(), 'users/'+ returner[0] + '/rooms', recieverid), {
+          lastAccessed: serverTimestamp(),
+          newMessage: true,
+          owner: false
+        });
+      }
+      catch(error) {
+        console.error('Error writing new room to Firebase Database for reciever: ', error);
+      } 
+    }
+    try {
+      await setDoc(doc(getFirestore(), 'users/'+ senderuid + '/rooms', recieverid), {
+        lastAccessed: serverTimestamp(),
+        newMessage: true, 
+        owner: true
+      });
+    }
+    catch {
+      console.error('Error writing new room to Firebase Database for sender: ', error);
+    }
+    try {
+      await setDoc(doc(getFirestore(), 'rooms', recieverid), {
+        name: (groupname == null || groupname == "" || groupname == " ") ? "Random Group": groupname,
+        members: wholeids,
+        profilepicurl: (profilepic == null || profilepic == "" || profilepic == " ") ? "default": profilepic
+        });
+    }
+    catch (error) {
+      console.error('Error writing new room to Firebase Database for room collection', error);
+    }
+    return
+  }
+  let qw = query(collection(getFirestore(app), 'rooms'), where("name", "in", [recdisplayname[0] + " and " + senderdisplayname, senderdisplayname + " and " + recdisplayname[0]]));
   const querySnapshotqw = await getDocs(qw);
   let returnerqw = []
   querySnapshotqw.forEach((doc) => {
@@ -106,7 +186,7 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   if (returnerqw.length != 0) {
     return "exists"
   }
-  let q = query(collection(getFirestore(app), 'users'), where("display_name", "==", recdisplayname.toLowerCase()))
+  let q = query(collection(getFirestore(app), 'users'), where("display_name", "==", recdisplayname[0].toLowerCase()))
   const querySnapshot = await getDocs(q);
   let returner = []
   let recieverid
@@ -119,7 +199,7 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   if (returner.length == 0) {
     return "nouser"
   }
-  let titlecaserec = await get(ref(getDatabase(), `/users/${returner[0].id}/display_name`))._node.value_;
+  let titlecaserec = (await get(ref(getDatabase(), `/users/${returner[0].id}/display_name`)))._node.value_;
 
   try {
     let receiver = await addDoc(collection(getFirestore(), 'users/'+ returner[0].id + '/rooms'), {
@@ -144,7 +224,9 @@ export async function addNewDMRoom(recdisplayname, senderuid, senderdisplayname)
   }
   try {
     await setDoc(doc(getFirestore(), 'rooms', recieverid), {
-      name: senderdisplayname + " and " + titlecaserec,
+      name: (groupname == null || groupname == "" || groupname == " ") ? senderdisplayname + " and " + titlecaserec: groupname,
+      members: [returner[0].id, senderuid],
+      profilepicurl: (profilepic == null || profilepic == "" || profilepic == " ") ? "default": profilepic
       });
   }
   catch {
@@ -197,4 +279,14 @@ export function userIsOnlineMsgSetter(uid) {
     return snapshot.val()
   })
 
+}
+
+function testImage(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+
+    img.src = url;
+    img.onload = () => resolve("success");
+    img.onerror = () => resolve("fail");
+  })
 }
