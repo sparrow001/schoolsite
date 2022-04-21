@@ -6,3 +6,4 @@
    - ::hover colors
 5. Better CSS in general
 6. Docviewer
+7. "Commonly Used Cloaks"

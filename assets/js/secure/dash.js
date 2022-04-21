@@ -1,4 +1,4 @@
-import { getCookie, deleteCookie, readUserData } from '../functions.js';
+import { getCookie, deleteCookie, readUserData, appendFav } from '../functions.js';
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 
@@ -17,7 +17,7 @@ const auth = getAuth(app);
 var data = readUserData(user);
 if(user == '') {
     signOut(auth);
-    window.location.replace("/schoolsite/index.html");
+    window.location.replace("../../../index.html");
 }else {
     window.title = user
 }
@@ -26,6 +26,10 @@ if(user == '') {
 function handleload() {
     if (sessionStorage.getItem("customtitle") != null) {
         document.title = atob(sessionStorage.getItem("customtitle"))
+    }else {
+    }
+    if (sessionStorage.getItem("customicon") != null) {
+        appendFav(atob(sessionStorage.getItem("customicon")))
     }else {
     }
 }
@@ -37,6 +41,7 @@ window.onbeforeunload = function() {
 
 
 let welcome = document.getElementById("welcome")
+let avatar = document.getElementById("avatarImg")
 data.then(function(data) {
     try {
         welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
@@ -49,6 +54,11 @@ data.then(function(data) {
         }
     }
 })
+if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != "" || JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
+    if (avatar != null) {
+        avatar.src = JSON.parse(localStorage.getItem("UserComplex")).photoURL;
+    }
+}
 
 function clickOrigin(e){
     var target = e.target;

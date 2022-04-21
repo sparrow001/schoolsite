@@ -115,6 +115,11 @@ export function readUserData(email, type="general") {
   
 }
 
+export function appendFav(url) {
+  let elem = `<link rel="icon" href="${url}">`
+  let head = document.getElementsByTagName("head")[0];
+  head.insertAdjacentHTML('beforeend', elem);
+}
 export async function request(url) {
   let response = await fetch(url);
   let data = await response.json();

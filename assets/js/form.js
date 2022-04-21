@@ -30,10 +30,25 @@ function logIn() {
 }
 
 function forgot() {
+    errmsg.innerHTML = "";
     document.getElementById("password").style.display = "none";
-    document.getElementById("forgot").style.display = "none";
+    document.getElementById("forgot").removeEventListener("click", forgot);
+    document.getElementById("forgot").addEventListener("click", forgotreturn);
+    document.getElementById("forgot").innerHTML = "Return"
     document.querySelector("#logIn").innerHTML = "Reset Password";
+    document.getElementById("logIn").removeEventListener("click", logIn);
     document.getElementById("logIn").addEventListener("click", reset);
+}
+
+function forgotreturn() {
+    errmsg.innerHTML = "";
+    document.getElementById("password").style.display = "block";
+    document.getElementById("forgot").innerHTML = "Forgot your password?"
+    document.getElementById("forgot").removeEventListener("click", forgotreturn);
+    document.getElementById("forgot").addEventListener("click", forgot);
+    document.querySelector("#logIn").innerHTML = "Log In";
+    document.getElementById("logIn").removeEventListener("click", reset);
+    document.getElementById("logIn").addEventListener("click", logIn);
 }
 
 function tos() {
@@ -54,13 +69,19 @@ window.onbeforeunload = function() {
     deleteCookie("user");
     signOut(auth)
 }
+
+window.onload = function() {
+    !!getCookie("medid") ? deleteCookie("medid") : null;
+    !!getCookie("user") ? deleteCookie("user") : null;
+    !!getCookie("session") ? deleteCookie("session") : null;
+}
 auth.onAuthStateChanged(user =>{
     if(user){
         errmsg.innerHTML = "";
         setcookiehour("user", user.email);
         localStorage.setItem("UserComplex", JSON.stringify(user));
         window.onbeforeunload = null;
-        window.location.replace("/schoolsite/portal/dash.html");
+        window.location.replace("./portal/dash.html");
     }
     else{
     }

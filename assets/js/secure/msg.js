@@ -1,7 +1,7 @@
 import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js';
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import { getStorage, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
-import { getDatabase,get, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
+import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
+import { getDatabase,get, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
 import { getFirestore, collection, onSnapshot, orderBy, query, doc, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead, userIsOnlineMsgSetter, setActiveRoom } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
@@ -19,7 +19,7 @@ const config = {
 
 const app = initializeApp(config);
 const auth = getAuth(app);
-document.getElementById("messagesend").addEventListener("click", handleSend);
+document.getElementById("messagesend").addEventListener("click", profileUpdate);
 document.getElementById("addnewroom").addEventListener("click", newroombutton);
 document.getElementById("closebutton").addEventListener("click", closemodal);
 document.getElementById("addroomsubmit").addEventListener("click", () => {
@@ -33,6 +33,9 @@ setPresenceListener();
     addRoomClickEventListeners()
 }) ();
 
+window.onbeforeunload = function() {
+    setActiveRoom(JSON.parse(localStorage.getItem("UserComplex")).uid, "")
+} 
 function closemodal() {
     let modal = document.getElementById("modal")
     let modalcontent = document.getElementById("addroominputs")
@@ -41,7 +44,7 @@ function closemodal() {
 }
 
 function profileUpdate() {
-    let uid = ""
+    let uid = "2Ei2NjWTIfeRGjmPFA6ZyPWtmRh1"
     let storage = getStorage();
     var storageRef = ref(storage, 'users/' + uid + '/av.png');   //add ref module
     console.log(storageRef)

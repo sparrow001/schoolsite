@@ -36,6 +36,7 @@ window.onbeforeunload = function() {
 
 
 let welcome = document.getElementById("welcome")
+let avatar = document.getElementById("avatarImg")
 data.then(function(data) {
     try {
         welcome.innerHTML = welcome.innerHTML + " " + data.display_name;
@@ -48,6 +49,10 @@ data.then(function(data) {
         }
     }
 })
+if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != "" || JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
+    avatar.src = JSON.parse(localStorage.getItem("UserComplex")).photoURL;
+}
+
 
 function clickOrigin(e){
     var target = e.target;
