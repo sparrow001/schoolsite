@@ -2,7 +2,7 @@ import { getAuth, updateProfile, signInWithEmailAndPassword } from 'https://www.
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getStorage, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js';
 import { getDatabase,get, onValue } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
-import { getFirestore, ref, collection, onSnapshot, orderBy, query, doc, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, orderBy, query, doc, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { getUnaccessedRooms, getRestOfRooms, getRoomDataFromRoomId, sendMessage, addNewDMRoom, setRoomAsRead, userIsOnlineMsgSetter, setActiveRoom } from "./msgfunctions.js";
 import { getUserFromUid, getCookie } from "../functions.js";
 import { setPresenceListener } from "./presence.js";
