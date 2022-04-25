@@ -27,12 +27,15 @@ Check out your dashboard and choose:
 
 ### Settings
 1. Tab Cloaking
+   - Icon
+   - Title
 
 ### Chat
 1. View Tutorials for documentation.
 
 ## Games:
  1. We currently have FNAF 1,2,3, and 4 available. Any game requests WILL BE DONE assuming its not crazy. (like full minecraft isn't happening, sorry)
+
 ## Currently Implemented Features
 1. Youtube playing
 2. Some Games
