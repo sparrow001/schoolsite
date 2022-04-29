@@ -151,6 +151,9 @@ async function redoAppendagesAfterAddRoom() {
 async function handleSend() {
     let uid = JSON.parse(localStorage.getItem('UserComplex')).uid;
     let content = document.getElementById('messageinput').value
+    if (content == "" || content == " ") {
+        return
+    }
     document.getElementById('messageinput').value = ""
     let edited = false;
     let reactions = ""
