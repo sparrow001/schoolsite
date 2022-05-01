@@ -178,7 +178,7 @@ function handleform() {
       // `data` is the parsed version of the JSON returned from the above endpoint.
 
       for (let i in data) {
-        names.push(data[i].Name);
+        names.push(data[i].Name.toLowerCase());
       }
     });
   const form = document.getElementById("signupform");
@@ -187,7 +187,7 @@ function handleform() {
     event.preventDefault();
     if (name.value == "") {
       error("Input is blank");
-    } else if (!names.includes(name.value)) {
+    } else if (!names.includes(name.value.toLowerCase())) {
       if (name.value.startsWith("submit") && getCookie("suggested") == "") {
         errmsg.style.color = "#186920";
         errmsg.innerHTML =
