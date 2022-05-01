@@ -151,13 +151,15 @@ async function redoAppendagesAfterAddRoom() {
 async function handleSend() {
     let uid = JSON.parse(localStorage.getItem('UserComplex')).uid;
     let content = document.getElementById('messageinput').value
+    if (content == "" || content == " ") {
+        return
+    }
+    document.getElementById('messageinput').value = ""
     let edited = false;
     let reactions = ""
     let type = "textMessage"
     let roomid = document.querySelectorAll(".roomitemselected")[0].id
     await sendMessage(uid, content, edited, reactions, type, roomid)
-    document.getElementById('messageinput').value = ""
-    
 }
 function newroombutton() {
     let modal = document.getElementById("modal")
