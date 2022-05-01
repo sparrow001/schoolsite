@@ -1,6 +1,7 @@
 import { getDatabase, ref, onValue, get, child, set, update } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js"
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import { NotArray } from "./errors.js"
 const firebaseConfig = {
   apiKey: "AIzaSyBff6gLXbUMW0rnq4186O9d9896toadZ30",
   authDomain: "school-site-b799d.firebaseapp.com",
@@ -12,7 +13,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
-function getUserInfo() {
+export function getUserInfo() {
   let string = localStorage.getItem("UserComplex")
   let user = JSON.parse(string)
   return user
@@ -62,7 +63,7 @@ export function writeNewPlaylist(songs, name) {
     songs = songs.split(",");
     if (songs instanceof Array) {
     }else {
-      return new Error("songs must be array")
+      throw new NotArray("writeNewPlaylist. Song param must be array.");
     }
     if (name == null) {
       return new Error("name cannot be null")

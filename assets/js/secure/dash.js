@@ -1,4 +1,4 @@
-import { getCookie, deleteCookie, readUserData, appendFav } from '../functions.js';
+import { getCookie, deleteCookie, readUserData, appendFav, request, getUserInfo } from '../functions.js';
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 
@@ -23,7 +23,7 @@ if(user == '') {
 }
 
 // Initialize Firebase
-function handleload() {
+async function handleload() {
     if (sessionStorage.getItem("customtitle") != null) {
         document.title = atob(sessionStorage.getItem("customtitle"))
     }else {
@@ -31,6 +31,19 @@ function handleload() {
     if (sessionStorage.getItem("customicon") != null) {
         appendFav(atob(sessionStorage.getItem("customicon")))
     }else {
+    }
+    if (!window.location.href.includes("/secure/admin/main")) {
+        if ((await request("https://admin.sparrow001.workers.dev/" + btoa(getUserInfo().uid))).state != true) {
+            document.getElementById("adminpage").remove()
+        }else {
+            document.getElementById("adminpage").style = null
+        }
+    }else {
+        if ((await request("https://admin.sparrow001.workers.dev/" + btoa(getUserInfo().uid))).state != true) {
+            window.onbeforeunload = null
+            window.location.replace("../../../secure/dash.html")
+        }else {
+        }
     }
 }
 window.onload = handleload()

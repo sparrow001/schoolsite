@@ -1,0 +1,38 @@
+#maincontainer {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    height: 50%;
+}
+
+h1 {
+    font-size: 2em;
+    margin-left: 1%;
+}
+#namereqcontainer {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    height: 50%;
+    padding: 1%;
+}
+
+#namesubcontainer {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 98%;
+    height: 50%;
+    padding: 1%;
+}

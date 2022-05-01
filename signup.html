@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>School Site - Home</title>
+    <title>School Site - Sign Up</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="./assets/css/index/style.css" />
+    <link rel="stylesheet" href="./assets/css/signup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="module" src="./assets/js/form.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,19 +20,20 @@
     />
   </head>
   <body>
-    <div id="formContainer">
-      <input type="email" placeholder="Email" id="email" class="shrinkable" />
-      <input
-        type="password"
-        placeholder="Password"
-        id="password"
-        class="shrinkable"
-      />
-      <p id="error"></p>
-      <p id="signup">No Account? <a href="./signup.html">Sign Up</a></p>
-      <button id="logIn" class="shrinkable">Log In</button>
+    <div class="formcontainer">
+      <form id="signupform" autocomplete="off">
+        <div class="autocomplete" style="width: 300px">
+          <input
+            id="myInput"
+            type="text"
+            placeholder="Your Name"
+          />
+        </div>
+        <input type="submit" />
+      </form>
+      <p id="errmsg"></p>
     </div>
-    <button id="forgot" onClick="forgot">Forgot your password?</button>
-    <button id="tos" onClick="tos">Terms of Service</button>
+    <button id="return">Back to Sign In</button>
   </body>
+  <script type="module" src="./assets/js/signup.js"></script>
 </html>
