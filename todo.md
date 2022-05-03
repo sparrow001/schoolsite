@@ -15,3 +15,8 @@
 1. Add password function
 
 
+## Bugs
+1. Default profile does not work
+2. Disable password autocomplete
+
+
