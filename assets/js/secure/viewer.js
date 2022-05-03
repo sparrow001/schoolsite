@@ -20,13 +20,12 @@ if (medid == null) {
     window.location.replace("docs.html");
 }else if (medid.startsWith("playlist")) {
     medid = medid.split(" ")[1]
-    let data = readUserData("", "playlists")
-    data.then((data) => {
-        setcookiehour("listauto", JSON.stringify(data[medid].songs))
-        playlistSongs = data[medid].songs
-        playlistAutoPlay()
-        //addSpecialButtons()
-    })
+    let data = JSON.parse(localStorage.getItem("User")).playlists
+    setcookiehour("listauto", JSON.stringify(data[medid].songs))
+    playlistSongs = data[medid].songs
+    playlistAutoPlay()
+    //addSpecialButtons()
+    
 }else if (medid.startsWith("link")) {
     medid = atob(medid.split(" ")[1])
     console.log(medid)

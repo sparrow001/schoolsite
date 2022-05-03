@@ -85,7 +85,7 @@
     </div>
     <div id="input">
       <div class="input-content" id="regularForm">
-        <input id="medinput" type="text" required />
+        <input id="medinput" type="text" required autocomplete="off"/>
         <button class="medsub" id="medsub">Try</button>
       </div>
       <div class="input-content" id="addPlaylistForm">
@@ -95,6 +95,7 @@
           type="text"
           required
           placeholder="Playlist Name"
+          autocomplete="off"
         />
         <input
           class="newinputs"
@@ -102,6 +103,7 @@
           type="text"
           required
           placeholder="video links, separated by a comma"
+          autocomplete="off"
         />
         <input
           class="newinputs"
@@ -109,6 +111,7 @@
           type="password"
           required
           placeholder="Password"
+          autocomplete="off"
         />
         <br />
         <p id="errormsg"></p>

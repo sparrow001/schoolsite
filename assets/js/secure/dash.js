@@ -67,7 +67,7 @@ data.then(function(data) {
         }
     }
 })
-if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != "" || JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
+if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
     if (avatar != null) {
         avatar.src = JSON.parse(localStorage.getItem("UserComplex")).photoURL;
     }

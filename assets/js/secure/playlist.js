@@ -23,14 +23,13 @@ document.getElementById("playlist-click").addEventListener("click", playlist);
 document.getElementById("closebutton").addEventListener("click", close);
 document.getElementById("playlist-add").addEventListener("click", addPlaylistInputOpener);
 document.getElementById("addmedsub").addEventListener("click", newPlaylist);
-
+let user = getCookie("user")
 function appendDivs() {
-    var playlistData = readUserData("", "playlists");
-    playlistData.then((data) => {
-        for (let i in data) {
-            appendPlaylist(data[i].name);
-        }
-    })
+    var playlistData = JSON.parse(localStorage.getItem("User")).playlists
+    for (let i in playlistData) {
+        appendPlaylist(data[i].name);
+    }
+
 }
 
 $(document).ready(function () {
@@ -77,6 +76,8 @@ function newPlaylist() {
         songlist.value = "";
         let errmsg = document.getElementById("errormsg")
         errmsg.innerHTML = '';
+        var data = readUserData(user)
+        localStorage.setItem("User", JSON.stringify(data))
     });
 }
 

@@ -11,3 +11,11 @@
 ## Chat
 1. Room Deletion
 2. Room ctx menu in general
+
+## Videos
+1. Remove video hide and show
+2. Add a text input for manually typed commands
+    1. Hide
+    2. Show
+    3. Loop
+    4. Shuffle

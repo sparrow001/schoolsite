@@ -4,13 +4,11 @@ import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-
 
 const user = getCookie("user");
 var data = readUserData(user);
-var playlistData = readUserData(user, "playlists");
 if(user == '') {
     window.location.replace("../index.html");
 }else {
     data.then(data => {
         localStorage.setItem('User', JSON.stringify(data));
-        localStorage.setItem('Playlists', JSON.stringify(playlistData));
     })
 }
 
@@ -49,7 +47,7 @@ data.then(function(data) {
         }
     }
 })
-if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != "" || JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
+if (JSON.parse(localStorage.getItem("UserComplex")).photoURL != null) {
     avatar.src = JSON.parse(localStorage.getItem("UserComplex")).photoURL;
 }
 
