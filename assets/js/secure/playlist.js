@@ -27,7 +27,7 @@ let user = getCookie("user")
 function appendDivs() {
     var playlistData = JSON.parse(localStorage.getItem("User")).playlists
     for (let i in playlistData) {
-        appendPlaylist(data[i].name);
+        appendPlaylist(playlistData[i].name);
     }
 
 }
@@ -65,19 +65,20 @@ function newPlaylist() {
                 else {
                 }
             });
+            
         }
-        
+        appendPlaylist(btoa(pname))
         results = results.join(",")
         writeNewPlaylist(results, pname);
         pname = document.getElementById("pname");
+        
         songlist = document.getElementById("songs")
         password.value = "";
         pname.value = "";
         songlist.value = "";
         let errmsg = document.getElementById("errormsg")
         errmsg.innerHTML = '';
-        var data = readUserData(user)
-        localStorage.setItem("User", JSON.stringify(data))
+
     });
 }
 

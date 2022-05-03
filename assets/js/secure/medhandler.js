@@ -5,7 +5,7 @@ document.getElementById('medsub').addEventListener('click', submedia);
 function submedia() {
     const regex = /(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be\/|be.com\/\S*(?:watch|embed|shorts|v|)(?:(?:(?=\/[^&\s\?]+(?!\S))\/)|(?:\S*v=|v\/)))([^&\s\?]+)/gm;
     let medbutton = document.getElementById('medsub');
-    let medinput = document.getElementById('medinput').value.toString();
+    let medinput = document.getElementById('medinput').value.toString().toLowerCase();
     let m = regex.exec(medinput)
     let resultpass
     if (m == null) {
