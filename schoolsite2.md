@@ -7,3 +7,7 @@
 5. Better CSS in general
 6. Docviewer
 7. "Commonly Used Cloaks"
+
+## Chat
+1. Room Deletion
+2. Room ctx menu in general
