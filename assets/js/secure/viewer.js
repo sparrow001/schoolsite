@@ -27,10 +27,11 @@ if (medid == null) {
         playlistAutoPlay()
         //addSpecialButtons()
     })
-    var data = readUserData(user);
-    data.then(data => {
+    let newdata = readUserData(user);
+    newdata.then(data => {
         localStorage.setItem('User', JSON.stringify(data));
     })
+
 }else if (medid.startsWith("link")) {
     medid = atob(medid.split(" ")[1])
     console.log(medid)
